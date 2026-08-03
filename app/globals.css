@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #F8FAFC;
+    color: #1F2937;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), var(--font-inter), sans-serif;
+  letter-spacing: -0.01em;
+}
+
+@layer base {
+  :root {
+        --background: 0 0% 100%;
+        --foreground: 220 13% 18%;
+        --card: 0 0% 100%;
+        --card-foreground: 220 13% 18%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 220 13% 18%;
+        --primary: 224 76% 40%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 217 91% 53%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 199 89% 48%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 224 76% 40%;
+        --chart-1: 224 76% 40%;
+        --chart-2: 199 89% 48%;
+        --chart-3: 142 71% 45%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+        --radius: 0.85rem;
+        --sidebar-background: 0 0% 98%;
+        --sidebar-foreground: 240 5.3% 26.1%;
+        --sidebar-primary: 224 76% 40%;
+        --sidebar-primary-foreground: 0 0% 98%;
+        --sidebar-accent: 240 4.8% 95.9%;
+        --sidebar-accent-foreground: 240 5.9% 10%;
+        --sidebar-border: 220 13% 91%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .glass {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+  .hero-gradient {
+    background: linear-gradient(120deg, rgba(30,64,175,0.92) 0%, rgba(37,99,235,0.82) 45%, rgba(14,165,233,0.55) 100%);
+  }
+  .section-fade > * {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fade-in-up 0.7s ease-out forwards;
+  }
+}
