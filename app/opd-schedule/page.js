@@ -69,6 +69,10 @@ export default function OPDSchedulePage() {
   const [department, setDepartment] = useState('all')
   const [day, setDay] = useState('all')
 
+  // If no doctor in the dataset has a qualification, hide the column entirely
+  // (header + cells) so the remaining columns naturally expand to fill the row.
+  const showQualification = DOCTORS.some((d) => d.qualification)
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return DOCTORS.filter((d) => {
@@ -171,7 +175,9 @@ export default function OPDSchedulePage() {
                 <tr className="bg-gradient-to-r from-[#173F8A] to-[#1E40AF] text-white">
                   <th className="text-left font-semibold px-5 py-4 whitespace-nowrap">Doctor Name</th>
                   <th className="text-left font-semibold px-4 py-4 whitespace-nowrap">Department</th>
-                  <th className="text-left font-semibold px-4 py-4 whitespace-nowrap">Qualification</th>
+                  {showQualification && (
+                    <th className="text-left font-semibold px-4 py-4 whitespace-nowrap">Qualification</th>
+                  )}
                   {DAYS.map((d) => (
                     <th key={d} className="font-semibold px-2 py-4 text-center whitespace-nowrap">{d}</th>
                   ))}
@@ -197,7 +203,9 @@ export default function OPDSchedulePage() {
                         {d.department}
                       </span>
                     </td>
-                    <td className="px-4 py-4 text-slate-600">{d.qualification || ''}</td>
+                    {showQualification && (
+                      <td className="px-4 py-4 text-slate-600">{d.qualification || ''}</td>
+                    )}
                     {DAYS.map((day) => (
                       <td key={day} className="px-2 py-4"><DayCell available={isAvailable(d, day)} /></td>
                     ))}
@@ -211,7 +219,7 @@ export default function OPDSchedulePage() {
 
                 {filtered.length === 0 && (
                   <tr>
-                    <td colSpan={10} className="px-6 py-16 text-center">
+                    <td colSpan={showQualification ? 10 : 9} className="px-6 py-16 text-center">
                       <div className="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-slate-100 text-slate-400 mb-4">
                         <Search className="h-6 w-6" />
                       </div>
