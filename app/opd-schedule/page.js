@@ -10,7 +10,7 @@ import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
-import { DEPARTMENTS, DAYS, DAY_FULL, DOCTORS } from '@/lib/data/opd'
+import { DEPARTMENTS, DAYS, DAY_FULL, DOCTORS, isAvailable, formatTiming } from '@/lib/data/opd'
 import { cn } from '@/lib/utils'
 
 const DayCell = ({ available }) => (
@@ -48,7 +48,7 @@ const DoctorCardMobile = ({ d }) => (
       {DAYS.map((day) => (
         <div key={day} className="flex flex-col items-center gap-1">
           <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">{day}</span>
-          <DayCell available={d.days[day]} />
+          <DayCell available={isAvailable(d, day)} />
         </div>
       ))}
     </div>
@@ -56,7 +56,7 @@ const DoctorCardMobile = ({ d }) => (
     <div className="mt-4 flex flex-wrap items-center gap-3 pt-3 border-t border-slate-100 text-sm">
       <div className="inline-flex items-center gap-1.5 text-slate-700">
         <Clock className="h-4 w-4 text-[#1E40AF]" />
-        <span className="font-medium">{d.timing}</span>
+        <span className="font-medium">{formatTiming(d)}</span>
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@ export default function OPDSchedulePage() {
     const q = query.trim().toLowerCase()
     return DOCTORS.filter((d) => {
       if (department !== 'all' && d.department !== department) return false
-      if (day !== 'all' && !d.days[day]) return false
+      if (day !== 'all' && !isAvailable(d, day)) return false
       if (q && !d.name.toLowerCase().includes(q) && !d.department.toLowerCase().includes(q) && !d.qualification.toLowerCase().includes(q)) return false
       return true
     })
@@ -178,7 +178,7 @@ export default function OPDSchedulePage() {
               </thead>
               <tbody>
                 {filtered.map((d, idx) => (
-                  <tr key={d.name} className={cn(
+                  <tr key={d.id} className={cn(
                     'border-t border-slate-100 hover:bg-blue-50/40 transition',
                     idx % 2 === 1 && 'bg-slate-50/50'
                   )}>
@@ -197,11 +197,11 @@ export default function OPDSchedulePage() {
                     </td>
                     <td className="px-4 py-4 text-slate-600">{d.qualification}</td>
                     {DAYS.map((day) => (
-                      <td key={day} className="px-2 py-4"><DayCell available={d.days[day]} /></td>
+                      <td key={day} className="px-2 py-4"><DayCell available={isAvailable(d, day)} /></td>
                     ))}
                     <td className="px-4 py-4">
                       <span className="inline-flex items-center gap-1.5 text-slate-700 whitespace-nowrap">
-                        <Clock className="h-3.5 w-3.5 text-[#1E40AF]" /> {d.timing}
+                        <Clock className="h-3.5 w-3.5 text-[#1E40AF]" /> {formatTiming(d)}
                       </span>
                     </td>
                   </tr>
@@ -245,7 +245,7 @@ export default function OPDSchedulePage() {
         {/* Mobile cards */}
         <div className="lg:hidden space-y-4">
           {filtered.map((d) => (
-            <DoctorCardMobile key={d.name} d={d} />
+            <DoctorCardMobile key={d.id} d={d} />
           ))}
           {filtered.length === 0 && (
             <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-10 text-center">
