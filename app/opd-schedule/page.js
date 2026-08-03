@@ -35,9 +35,11 @@ const DoctorCardMobile = ({ d, day }) => (
         <div className="mt-1 inline-flex items-center gap-1.5 text-xs text-[#1E40AF] bg-blue-50 rounded-full px-2 py-0.5 font-medium">
           <Building2 className="h-3 w-3" /> {d.department}
         </div>
-        <div className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-500">
-          <GraduationCap className="h-3.5 w-3.5" /> {d.qualification}
-        </div>
+        {d.qualification && (
+          <div className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-500">
+            <GraduationCap className="h-3.5 w-3.5" /> {d.qualification}
+          </div>
+        )}
       </div>
       <span className="inline-flex items-center justify-center h-11 w-11 rounded-2xl bg-gradient-to-br from-[#1E40AF] to-[#0EA5E9] text-white shadow-md shrink-0">
         <Stethoscope className="h-5 w-5" />
@@ -72,7 +74,7 @@ export default function OPDSchedulePage() {
     return DOCTORS.filter((d) => {
       if (department !== 'all' && d.department !== department) return false
       if (day !== 'all' && !isAvailable(d, day)) return false
-      if (q && !d.name.toLowerCase().includes(q) && !d.department.toLowerCase().includes(q) && !d.qualification.toLowerCase().includes(q)) return false
+      if (q && !d.name.toLowerCase().includes(q) && !d.department.toLowerCase().includes(q) && !(d.qualification || '').toLowerCase().includes(q)) return false
       return true
     })
   }, [query, department, day])
@@ -195,7 +197,7 @@ export default function OPDSchedulePage() {
                         {d.department}
                       </span>
                     </td>
-                    <td className="px-4 py-4 text-slate-600">{d.qualification}</td>
+                    <td className="px-4 py-4 text-slate-600">{d.qualification || ''}</td>
                     {DAYS.map((day) => (
                       <td key={day} className="px-2 py-4"><DayCell available={isAvailable(d, day)} /></td>
                     ))}
