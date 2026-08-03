@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import {
-  Search, Filter, Calendar, Users, X, Check, Minus, Stethoscope, Clock, DoorOpen, Building2, GraduationCap
+  Search, Filter, Calendar, Users, X, Check, Minus, Stethoscope, Clock, Building2, GraduationCap
 } from 'lucide-react'
 import PageHeader from '@/components/site/PageHeader'
 import { Input } from '@/components/ui/input'
@@ -57,11 +57,6 @@ const DoctorCardMobile = ({ d }) => (
       <div className="inline-flex items-center gap-1.5 text-slate-700">
         <Clock className="h-4 w-4 text-[#1E40AF]" />
         <span className="font-medium">{d.timing}</span>
-      </div>
-      <span className="h-3 w-px bg-slate-200" />
-      <div className="inline-flex items-center gap-1.5 text-slate-700">
-        <DoorOpen className="h-4 w-4 text-[#16A34A]" />
-        <span>Room <span className="font-semibold">{d.room}</span></span>
       </div>
     </div>
   </div>
@@ -179,7 +174,6 @@ export default function OPDSchedulePage() {
                     <th key={d} className="font-semibold px-2 py-4 text-center whitespace-nowrap">{d}</th>
                   ))}
                   <th className="text-left font-semibold px-4 py-4 whitespace-nowrap">Timing</th>
-                  <th className="text-left font-semibold px-4 py-4 whitespace-nowrap">Room</th>
                 </tr>
               </thead>
               <tbody>
@@ -210,17 +204,12 @@ export default function OPDSchedulePage() {
                         <Clock className="h-3.5 w-3.5 text-[#1E40AF]" /> {d.timing}
                       </span>
                     </td>
-                    <td className="px-4 py-4">
-                      <span className="inline-flex items-center gap-1.5 font-semibold text-slate-900">
-                        <DoorOpen className="h-3.5 w-3.5 text-[#16A34A]" /> {d.room}
-                      </span>
-                    </td>
                   </tr>
                 ))}
 
                 {filtered.length === 0 && (
                   <tr>
-                    <td colSpan={11} className="px-6 py-16 text-center">
+                    <td colSpan={10} className="px-6 py-16 text-center">
                       <div className="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-slate-100 text-slate-400 mb-4">
                         <Search className="h-6 w-6" />
                       </div>
