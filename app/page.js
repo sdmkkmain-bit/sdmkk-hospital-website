@@ -118,118 +118,141 @@ const previewCards = [
 const Home = () => {
   return (
     <>
-      {/* HERO - light, image-forward */}
-      <section className="relative overflow-hidden bg-white">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <Image
-            src={HOSPITAL.heroImage}
-            alt="Shree Dombivali Manav Kalyan Kendra Charitable Hospital"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-          {/* Soft glass overlay — keeps the building bright while text stays readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/92 via-white/70 to-white/10 md:from-white/88 md:via-white/55 md:to-white/0" />
-          <div className="absolute inset-y-0 left-0 w-full md:w-3/4 backdrop-blur-[2px]" />
-          <div className="absolute inset-0 bg-white/20 md:hidden" />
-        </div>
-
-        <div className="relative container py-16 md:py-24 lg:py-28">
-          <div className="max-w-[760px] lg:max-w-[820px] animate-fade-in-up">
-            {/* Trust badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 pl-2 pr-3 py-1.5 text-xs md:text-sm shadow-soft">
-              <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[#1E40AF]/10 text-[#173F8A]">
-                <ShieldCheck className="h-3.5 w-3.5" />
-              </span>
-              <span className="font-semibold text-slate-700">Registered Charitable Trust</span>
-              <span className="h-3 w-px bg-slate-300" />
-              <span className="text-slate-500">Reg. No.: {HOSPITAL.regNo}</span>
-            </div>
-
-            {/* Premium Serif Title */}
-            <h1
-              className="mt-7 font-serif text-[#173F8A] text-[42px] sm:text-5xl md:text-[58px] lg:text-[68px] leading-[1.08] md:leading-[1.05] text-balance"
-              style={{ fontWeight: 700, letterSpacing: '-0.005em' }}
-            >
-              Shree Dombivali<br className="hidden sm:block" /> Manav Kalyan Kendra
-            </h1>
-
-            {/* Divider label */}
-            <div className="mt-4 flex items-center gap-3 max-w-lg">
-              <span className="h-px flex-1 bg-[#1E40AF]/25" />
-              <span className="font-heading font-bold text-[#1E40AF] text-sm md:text-base tracking-[0.18em] uppercase whitespace-nowrap">
-                Charitable Hospital &amp; Polyclinic
-              </span>
-              <span className="h-px flex-1 bg-[#1E40AF]/25" />
-            </div>
-
-            {/* Green tagline (inline) */}
-            <div className="mt-5 flex items-center gap-2.5 text-[#16A34A]">
-              <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-green-100">
-                <HeartPulse className="h-4 w-4" />
-              </span>
-              <span className="font-heading font-bold text-lg md:text-2xl">
-                {HOSPITAL.tagline}
-              </span>
-            </div>
-
-            {/* Description */}
-            <p className="mt-5 text-slate-600 text-base md:text-lg leading-[1.75] max-w-2xl">
-              Serving the community with quality healthcare, experienced doctors and
-              modern medical facilities — where compassionate treatment meets{' '}
-              <span className="font-semibold text-[#16A34A]">affordable care</span>.
-            </p>
-
-            {/* Establishment info row */}
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm md:text-[15px] text-slate-700">
-              <div className="inline-flex items-center gap-2">
-                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-[#173F8A]">
-                  <CalendarCheck className="h-4 w-4" />
+      {/* HERO - true two-column split */}
+      <section className="relative bg-gradient-to-b from-[#F8FAFC] to-white">
+        <div className="container pt-10 md:pt-14 pb-8 md:pb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-8 lg:gap-12 items-center">
+            {/* LEFT — content on white */}
+            <div className="animate-fade-in-up">
+              {/* Trust badge */}
+              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 pl-2 pr-3 py-1.5 text-xs md:text-sm shadow-soft">
+                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[#1E40AF]/10 text-[#173F8A]">
+                  <ShieldCheck className="h-3.5 w-3.5" />
                 </span>
-                <span>
-                  <span className="text-slate-500">Established Since</span>{' '}
-                  <span className="font-heading font-bold text-slate-900">1984</span>
+                <span className="font-semibold text-slate-700">Registered Charitable Trust</span>
+                <span className="h-3 w-px bg-slate-300" />
+                <span className="text-slate-500">Reg. No.: {HOSPITAL.regNo}</span>
+              </div>
+
+              {/* Premium Serif Title */}
+              <h1
+                className="mt-6 font-serif text-[#173F8A] text-[40px] sm:text-5xl md:text-[54px] lg:text-[60px] leading-[1.08] md:leading-[1.05] text-balance"
+                style={{ fontWeight: 700, letterSpacing: '-0.005em' }}
+              >
+                Shree Dombivali<br className="hidden sm:block" /> Manav Kalyan Kendra
+              </h1>
+
+              {/* Divider label */}
+              <div className="mt-4 flex items-center gap-3 max-w-md">
+                <span className="h-px flex-1 bg-[#1E40AF]/25" />
+                <span className="font-heading font-bold text-[#1E40AF] text-sm md:text-base tracking-[0.18em] uppercase whitespace-nowrap">
+                  Charitable Hospital &amp; Polyclinic
+                </span>
+                <span className="h-px flex-1 bg-[#1E40AF]/25" />
+              </div>
+
+              {/* Green tagline (inline) */}
+              <div className="mt-5 flex items-center gap-2.5 text-[#16A34A]">
+                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-green-100">
+                  <HeartPulse className="h-4 w-4" />
+                </span>
+                <span className="font-heading font-bold text-lg md:text-2xl">
+                  {HOSPITAL.tagline}
                 </span>
               </div>
-              <span className="hidden md:inline h-4 w-px bg-slate-300" />
-              <div className="inline-flex items-center gap-2">
-                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-[#173F8A]">
-                  <MapPin className="h-4 w-4" />
-                </span>
-                <span className="font-heading font-semibold">Dombivli, Maharashtra</span>
+
+              {/* Description */}
+              <p className="mt-5 text-slate-600 text-base md:text-lg leading-[1.75] max-w-xl">
+                Serving the community with quality healthcare, experienced doctors and
+                modern medical facilities — where compassionate treatment meets{' '}
+                <span className="font-semibold text-[#16A34A]">affordable care</span>.
+              </p>
+
+              {/* Establishment info row */}
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm md:text-[15px] text-slate-700">
+                <div className="inline-flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-[#173F8A]">
+                    <CalendarCheck className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <span className="text-slate-500">Established Since</span>{' '}
+                    <span className="font-heading font-bold text-slate-900">1984</span>
+                  </span>
+                </div>
+                <span className="hidden md:inline h-4 w-px bg-slate-300" />
+                <div className="inline-flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-[#173F8A]">
+                    <MapPin className="h-4 w-4" />
+                  </span>
+                  <span className="font-heading font-semibold">Dombivli, Maharashtra</span>
+                </div>
+              </div>
+
+              {/* CTA buttons */}
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href={`tel:${HOSPITAL.phone.replace(/\s/g, '')}`}>
+                  <Button size="lg" className="h-12 px-5 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
+                    <Phone className="h-4 w-4" /> Call Hospital
+                  </Button>
+                </a>
+                <Link href="/opd-schedule">
+                  <Button size="lg" className="h-12 px-5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
+                    <Calendar className="h-4 w-4" /> View OPD Schedule
+                  </Button>
+                </Link>
+                <Link href="/bed-availability">
+                  <Button size="lg" className="h-12 px-5 rounded-xl bg-[#173F8A] hover:bg-[#1E40AF] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
+                    <BedDouble className="h-4 w-4" /> Check Bed Availability
+                  </Button>
+                </Link>
+                <a href={HOSPITAL.mapsUrl} target="_blank" rel="noreferrer">
+                  <Button size="lg" variant="outline" className="h-12 px-5 rounded-xl bg-white border-slate-200 text-slate-700 hover:bg-slate-50 gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
+                    <MapPin className="h-4 w-4 text-[#173F8A]" /> Get Directions
+                  </Button>
+                </a>
               </div>
             </div>
 
-            {/* CTA buttons */}
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={`tel:${HOSPITAL.phone.replace(/\s/g, '')}`}>
-                <Button size="lg" className="h-12 px-6 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
-                  <Phone className="h-4 w-4" /> Call Hospital
-                </Button>
-              </a>
-              <Link href="/opd-schedule">
-                <Button size="lg" className="h-12 px-6 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
-                  <Calendar className="h-4 w-4" /> View OPD Schedule
-                </Button>
-              </Link>
-              <Link href="/bed-availability">
-                <Button size="lg" className="h-12 px-6 rounded-xl bg-[#173F8A] hover:bg-[#1E40AF] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
-                  <BedDouble className="h-4 w-4" /> Check Bed Availability
-                </Button>
-              </Link>
-              <a href={HOSPITAL.mapsUrl} target="_blank" rel="noreferrer">
-                <Button size="lg" variant="outline" className="h-12 px-6 rounded-xl bg-white border-slate-200 text-slate-700 hover:bg-slate-50 gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
-                  <MapPin className="h-4 w-4 text-[#173F8A]" /> Get Directions
-                </Button>
-              </a>
+            {/* RIGHT — hospital image */}
+            <div className="relative animate-fade-in-up">
+              {/* Decorative soft blur behind image */}
+              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-[#1E40AF]/10 via-transparent to-[#0EA5E9]/10 blur-2xl" />
+              <div className="relative rounded-[1.75rem] overflow-hidden shadow-card ring-1 ring-slate-100 bg-slate-100 aspect-[4/3] lg:aspect-[5/4]">
+                <Image
+                  src={HOSPITAL.heroImage}
+                  alt="Shree Dombivali Manav Kalyan Kendra Charitable Hospital"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                />
+              </div>
+
+              {/* Floating small info card */}
+              <div className="hidden md:flex absolute -bottom-5 -left-5 items-center gap-3 rounded-2xl bg-white shadow-hover border border-slate-100 px-4 py-3">
+                <span className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-green-100 text-[#16A34A]">
+                  <HeartHandshake className="h-5 w-5" />
+                </span>
+                <div className="text-left">
+                  <div className="text-[11px] text-slate-500 leading-none">Serving since</div>
+                  <div className="font-heading font-bold text-slate-900 text-lg leading-tight">1984</div>
+                </div>
+              </div>
+              <div className="hidden md:flex absolute -top-5 -right-5 items-center gap-3 rounded-2xl bg-white shadow-hover border border-slate-100 px-4 py-3">
+                <span className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-blue-100 text-[#1E40AF]">
+                  <ShieldCheck className="h-5 w-5" />
+                </span>
+                <div className="text-left">
+                  <div className="text-[11px] text-slate-500 leading-none">Reg. No.</div>
+                  <div className="font-heading font-bold text-slate-900 text-sm leading-tight">F-1002</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Quick action strip */}
-        <div className="relative container pb-10 md:pb-14">
+        <div className="container pb-10 md:pb-14">
           <div className="rounded-2xl bg-white border border-slate-100 shadow-card p-5 md:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {quickActions.map((q) => (
               <Link
