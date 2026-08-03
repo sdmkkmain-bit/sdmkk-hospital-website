@@ -27,7 +27,7 @@ const DayCell = ({ available }) => (
   </div>
 )
 
-const DoctorCardMobile = ({ d }) => (
+const DoctorCardMobile = ({ d, day }) => (
   <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
@@ -56,7 +56,7 @@ const DoctorCardMobile = ({ d }) => (
     <div className="mt-4 flex flex-wrap items-center gap-3 pt-3 border-t border-slate-100 text-sm">
       <div className="inline-flex items-center gap-1.5 text-slate-700">
         <Clock className="h-4 w-4 text-[#1E40AF]" />
-        <span className="font-medium">{formatTiming(d)}</span>
+        <span className="font-medium">{formatTiming(d, day)}</span>
       </div>
     </div>
   </div>
@@ -201,7 +201,7 @@ export default function OPDSchedulePage() {
                     ))}
                     <td className="px-4 py-4">
                       <span className="inline-flex items-center gap-1.5 text-slate-700 whitespace-nowrap">
-                        <Clock className="h-3.5 w-3.5 text-[#1E40AF]" /> {formatTiming(d)}
+                        <Clock className="h-3.5 w-3.5 text-[#1E40AF]" /> {formatTiming(d, day)}
                       </span>
                     </td>
                   </tr>
@@ -245,7 +245,7 @@ export default function OPDSchedulePage() {
         {/* Mobile cards */}
         <div className="lg:hidden space-y-4">
           {filtered.map((d) => (
-            <DoctorCardMobile key={d.id} d={d} />
+            <DoctorCardMobile key={d.id} d={d} day={day} />
           ))}
           {filtered.length === 0 && (
             <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-10 text-center">
