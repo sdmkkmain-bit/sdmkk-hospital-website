@@ -213,11 +213,9 @@ const Home = () => {
               </div>
             </div>
 
-            {/* RIGHT — hospital image */}
+            {/* RIGHT — hospital image, seamlessly blended with left */}
             <div className="relative animate-fade-in-up">
-              {/* Decorative soft blur behind image */}
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-[#1E40AF]/10 via-transparent to-[#0EA5E9]/10 blur-2xl" />
-              <div className="relative rounded-[1.75rem] overflow-hidden shadow-card ring-1 ring-slate-100 bg-slate-100 aspect-[4/3] lg:aspect-[5/4]">
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3] lg:aspect-[5/4] bg-slate-100">
                 <Image
                   src={HOSPITAL.heroImage}
                   alt="Shree Dombivali Manav Kalyan Kendra Charitable Hospital"
@@ -226,26 +224,14 @@ const Home = () => {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                 />
-              </div>
-
-              {/* Floating small info card */}
-              <div className="hidden md:flex absolute -bottom-5 -left-5 items-center gap-3 rounded-2xl bg-white shadow-hover border border-slate-100 px-4 py-3">
-                <span className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-green-100 text-[#16A34A]">
-                  <HeartHandshake className="h-5 w-5" />
-                </span>
-                <div className="text-left">
-                  <div className="text-[11px] text-slate-500 leading-none">Serving since</div>
-                  <div className="font-heading font-bold text-slate-900 text-lg leading-tight">1984</div>
-                </div>
-              </div>
-              <div className="hidden md:flex absolute -top-5 -right-5 items-center gap-3 rounded-2xl bg-white shadow-hover border border-slate-100 px-4 py-3">
-                <span className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-blue-100 text-[#1E40AF]">
-                  <ShieldCheck className="h-5 w-5" />
-                </span>
-                <div className="text-left">
-                  <div className="text-[11px] text-slate-500 leading-none">Reg. No.</div>
-                  <div className="font-heading font-bold text-slate-900 text-sm leading-tight">F-1002</div>
-                </div>
+                {/* Seamless white-to-transparent blend from left */}
+                <div
+                  className="hidden lg:block absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.98) 12%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0.25) 55%, rgba(255,255,255,0) 70%)',
+                  }}
+                />
               </div>
             </div>
           </div>
