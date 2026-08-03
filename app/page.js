@@ -56,24 +56,24 @@ const stats = [
     value: '110+',
     label: 'Consultants',
     sub: 'Experienced & qualified',
-    icon: Stethoscope,
+    icon: Users,
     valueColor: 'text-[#16A34A]',
     iconBg: 'bg-green-100 text-[#16A34A]',
     cardBg: 'bg-gradient-to-br from-green-50 to-white',
   },
   {
-    value: '4',
-    label: 'IPF Beds',
-    sub: 'Indigent Patient Fund',
-    icon: Heart,
-    valueColor: 'text-[#E11D48]',
-    iconBg: 'bg-rose-100 text-[#E11D48]',
-    cardBg: 'bg-gradient-to-br from-rose-50 to-white',
+    value: 'Multi',
+    label: 'Speciality Hospital',
+    sub: 'Comprehensive healthcare',
+    icon: ShieldCheck,
+    valueColor: 'text-[#7C3AED]',
+    iconBg: 'bg-violet-100 text-[#7C3AED]',
+    cardBg: 'bg-gradient-to-br from-violet-50 to-white',
   },
   {
-    value: '4',
-    label: 'Weaker Section Beds',
-    sub: 'For eligible patients',
+    value: 'Charitable',
+    label: 'Healthcare Trust',
+    sub: 'Care with compassion',
     icon: HeartHandshake,
     valueColor: 'text-[#D97706]',
     iconBg: 'bg-amber-100 text-[#D97706]',
@@ -156,30 +156,29 @@ const Home = () => {
               Shree Dombivali<br className="hidden sm:block" /> Manav Kalyan Kendra
             </h1>
 
-            {/* Subtitle - clean sans */}
-            <p
-              className="mt-3 font-heading text-slate-700 text-lg md:text-xl lg:text-[22px]"
-              style={{ fontWeight: 500, letterSpacing: '0.005em' }}
-            >
-              Charitable Hospital &amp; Polyclinic
-            </p>
+            {/* Divider label */}
+            <div className="mt-4 flex items-center gap-3 max-w-lg">
+              <span className="h-px flex-1 bg-[#1E40AF]/25" />
+              <span className="font-heading font-bold text-[#1E40AF] text-sm md:text-base tracking-[0.18em] uppercase whitespace-nowrap">
+                Charitable Hospital &amp; Polyclinic
+              </span>
+              <span className="h-px flex-1 bg-[#1E40AF]/25" />
+            </div>
 
-            {/* Green motto badge */}
-            <div className="mt-5">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-green-200 pl-2 pr-4 py-1.5 shadow-soft">
-                <span className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-[#16A34A] text-white">
-                  <HeartHandshake className="h-3.5 w-3.5" />
-                </span>
-                <span className="font-heading font-bold text-[#16A34A] text-sm md:text-base tracking-wide">
-                  Corporate Care at Charitable Rate
-                </span>
-              </div>
+            {/* Green tagline (inline) */}
+            <div className="mt-5 flex items-center gap-2.5 text-[#16A34A]">
+              <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-green-100">
+                <HeartPulse className="h-4 w-4" />
+              </span>
+              <span className="font-heading font-bold text-lg md:text-2xl">
+                {HOSPITAL.tagline}
+              </span>
             </div>
 
             {/* Description */}
-            <p className="mt-6 text-slate-600 text-base md:text-lg leading-[1.75] max-w-2xl">
-              Serving the community with quality healthcare, experienced doctors and modern
-              medical facilities — where compassionate treatment meets{' '}
+            <p className="mt-5 text-slate-600 text-base md:text-lg leading-[1.75] max-w-2xl">
+              Serving the community with quality healthcare, experienced doctors and
+              modern medical facilities — where compassionate treatment meets{' '}
               <span className="font-semibold text-[#16A34A]">affordable care</span>.
             </p>
 
