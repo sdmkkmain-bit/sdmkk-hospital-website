@@ -219,15 +219,15 @@ const Home = () => {
               alt="Shree Dombivali Manav Kalyan Kendra Charitable Hospital"
               fill
               priority
-              className="object-cover"
+              className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 55vw"
             />
-            {/* Subtle left-edge fade only — ~10% width */}
+            {/* Subtle left-edge fade only — reduced ~20% */}
             <div
-              className="hidden lg:block absolute inset-y-0 left-0 w-[10%] pointer-events-none"
+              className="hidden lg:block absolute inset-y-0 left-0 w-[8%] pointer-events-none"
               style={{
                 background:
-                  'linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0) 100%)',
+                  'linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0) 100%)',
               }}
             />
           </div>
