@@ -224,12 +224,12 @@ const Home = () => {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                 />
-                {/* Seamless white-to-transparent blend from left */}
+                {/* Subtle edge fade only \u2014 8-12% along the left */}
                 <div
-                  className="hidden lg:block absolute inset-0 pointer-events-none"
+                  className="hidden lg:block absolute inset-y-0 left-0 w-[12%] pointer-events-none"
                   style={{
                     background:
-                      'linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.98) 12%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0.25) 55%, rgba(255,255,255,0) 70%)',
+                      'linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0) 100%)',
                   }}
                 />
               </div>
