@@ -1,5 +1,5 @@
 import './globals.css'
-import { Inter, Poppins } from 'next/font/google'
+import { Inter, Poppins, Playfair_Display } from 'next/font/google'
 import { Providers } from './providers'
 import Header from '@/components/site/Header'
 import Footer from '@/components/site/Footer'
@@ -17,6 +17,14 @@ const poppins = Poppins({
   display: 'swap',
 })
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['500','600','700','800','900'],
+  style: ['normal','italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
+
 export const metadata = {
   title: 'Shree Dombivali Manav Kalyan Kendra Charitable Hospital & Polyclinic',
   description: 'Corporate Care at Charitable Rate — A multi-speciality charitable hospital in Dombivali.',
@@ -24,7 +32,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable} ${playfair.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{__html:'window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);'}} />
       </head>

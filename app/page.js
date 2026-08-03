@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {
   Phone, MapPin, Calendar, BedDouble, ArrowRight, ShieldCheck,
   Users, Stethoscope, HeartHandshake, ChevronRight, Clock, Award,
-  Image as ImageIcon, FileCheck2, UserSquare2, Building2, Info, HeartPulse,
+  Image as ImageIcon, FileCheck2, UserSquare2, Building2, Info, HeartPulse, Heart,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { HOSPITAL } from '@/lib/site'
@@ -49,34 +49,34 @@ const stats = [
     icon: BedDouble,
     valueColor: 'text-[#1E40AF]',
     iconBg: 'bg-blue-100 text-[#1E40AF]',
-    cardBg: 'bg-blue-50/60',
+    cardBg: 'bg-gradient-to-br from-blue-50 to-white',
   },
   {
     value: '110+',
     label: 'Consultants',
     sub: 'Experienced & qualified',
-    icon: Users,
+    icon: Stethoscope,
     valueColor: 'text-[#16A34A]',
     iconBg: 'bg-green-100 text-[#16A34A]',
-    cardBg: 'bg-green-50/60',
+    cardBg: 'bg-gradient-to-br from-green-50 to-white',
   },
   {
-    value: 'Multi',
-    label: 'Speciality Hospital',
-    sub: 'Comprehensive healthcare',
-    icon: ShieldCheck,
-    valueColor: 'text-[#7C3AED]',
-    iconBg: 'bg-violet-100 text-[#7C3AED]',
-    cardBg: 'bg-violet-50/60',
+    value: '4',
+    label: 'IPF Beds',
+    sub: 'Indigent Patient Fund',
+    icon: Heart,
+    valueColor: 'text-[#E11D48]',
+    iconBg: 'bg-rose-100 text-[#E11D48]',
+    cardBg: 'bg-gradient-to-br from-rose-50 to-white',
   },
   {
-    value: 'Charitable',
-    label: 'Healthcare Trust',
-    sub: 'Care with compassion',
+    value: '4',
+    label: 'Weaker Section Beds',
+    sub: 'For eligible patients',
     icon: HeartHandshake,
     valueColor: 'text-[#D97706]',
     iconBg: 'bg-amber-100 text-[#D97706]',
-    cardBg: 'bg-amber-50/60',
+    cardBg: 'bg-gradient-to-br from-amber-50 to-white',
   },
 ]
 
@@ -129,13 +129,13 @@ const Home = () => {
             className="object-cover"
             sizes="100vw"
           />
-          {/* Light overlay to keep the image bright but readable text on the left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/10 md:from-white md:via-white/80 md:to-transparent" />
-          <div className="absolute inset-0 bg-white/30 md:hidden" />
+          {/* Lighter overlay so the building shows more */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-white/0 md:from-white/92 md:via-white/65 md:to-transparent" />
+          <div className="absolute inset-0 bg-white/25 md:hidden" />
         </div>
 
         <div className="relative container py-16 md:py-24 lg:py-28">
-          <div className="max-w-[720px] lg:max-w-[780px] animate-fade-in-up">
+          <div className="max-w-[760px] lg:max-w-[820px] animate-fade-in-up">
             {/* Trust badge */}
             <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 pl-2 pr-3 py-1.5 text-xs md:text-sm shadow-soft">
               <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[#1E40AF]/10 text-[#1E40AF]">
@@ -146,59 +146,80 @@ const Home = () => {
               <span className="text-slate-500">Reg. No.: {HOSPITAL.regNo}</span>
             </div>
 
-            {/* Title */}
+            {/* Premium Serif Title */}
             <h1
-              className="mt-6 font-heading text-[#1E3A8A] text-4xl sm:text-5xl md:text-[56px] lg:text-[60px] leading-[1.05] text-balance"
-              style={{ fontWeight: 900, letterSpacing: '-0.005em' }}
+              className="mt-7 font-serif text-[#1E3A8A] text-[42px] sm:text-5xl md:text-[58px] lg:text-[68px] leading-[1.08] md:leading-[1.06] text-balance"
+              style={{ fontWeight: 700, letterSpacing: '-0.005em' }}
             >
               Shree Dombivali<br className="hidden sm:block" /> Manav Kalyan Kendra
             </h1>
 
-            {/* Divider label */}
-            <div className="mt-4 flex items-center gap-3 max-w-lg">
-              <span className="h-px flex-1 bg-[#1E40AF]/25" />
-              <span className="font-heading font-bold text-[#1E40AF] text-sm md:text-base tracking-[0.18em] uppercase whitespace-nowrap">
-                Charitable Hospital &amp; Polyclinic
-              </span>
-              <span className="h-px flex-1 bg-[#1E40AF]/25" />
-            </div>
+            {/* Subtitle */}
+            <p
+              className="mt-3 font-serif italic text-[#1E40AF] text-xl md:text-2xl lg:text-[28px] leading-snug"
+              style={{ fontWeight: 500, letterSpacing: '0.005em' }}
+            >
+              Charitable Hospital &amp; Polyclinic
+            </p>
 
-            {/* Green tagline */}
-            <div className="mt-5 flex items-center gap-2.5 text-[#16A34A]">
-              <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-green-100">
-                <HeartPulse className="h-4 w-4" />
-              </span>
-              <span className="font-heading font-bold text-lg md:text-2xl">
-                {HOSPITAL.tagline}
-              </span>
+            {/* Green motto badge */}
+            <div className="mt-5">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-green-200 pl-2 pr-4 py-1.5 shadow-soft">
+                <span className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-[#16A34A] text-white">
+                  <Heart className="h-3.5 w-3.5 fill-white" />
+                </span>
+                <span className="font-heading font-bold text-[#16A34A] text-sm md:text-base tracking-wide">
+                  Corporate Care at Charitable Rate
+                </span>
+              </div>
             </div>
 
             {/* Description */}
-            <p className="mt-5 text-slate-600 text-base md:text-lg leading-relaxed max-w-xl">
-              A multi-speciality charitable hospital serving Dombivali with compassionate,
-              quality healthcare — combining corporate-grade care with the warmth of a{' '}
-              <span className="font-semibold text-slate-800">trust.</span>
+            <p className="mt-6 text-slate-600 text-base md:text-lg leading-[1.75] max-w-2xl">
+              Serving the community with quality healthcare, experienced doctors and modern
+              medical facilities — where compassionate treatment meets{' '}
+              <span className="font-semibold text-[#16A34A]">Affordable Care</span>.
             </p>
 
+            {/* Establishment info row */}
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm md:text-[15px]">
+              <div className="inline-flex items-center gap-2 text-slate-700">
+                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-rose-50 text-[#E11D48]">
+                  <Heart className="h-4 w-4 fill-[#E11D48]" />
+                </span>
+                <span>
+                  <span className="text-slate-500">Serving the Community</span>{' '}
+                  <span className="font-heading font-bold text-slate-900">Since 1984</span>
+                </span>
+              </div>
+              <span className="hidden md:inline h-4 w-px bg-slate-300" />
+              <div className="inline-flex items-center gap-2 text-slate-700">
+                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-[#1E40AF]">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                <span className="font-heading font-semibold">Dombivli, Maharashtra</span>
+              </div>
+            </div>
+
             {/* CTA buttons */}
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a href={`tel:${HOSPITAL.phone.replace(/\s/g, '')}`}>
-                <Button size="lg" className="h-12 px-5 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white gap-2 shadow-soft">
+                <Button size="lg" className="h-12 px-6 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
                   <Phone className="h-4 w-4" /> Call Hospital
                 </Button>
               </a>
               <Link href="/opd-schedule">
-                <Button size="lg" className="h-12 px-5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white gap-2 shadow-soft">
+                <Button size="lg" className="h-12 px-6 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
                   <Calendar className="h-4 w-4" /> View OPD Schedule
                 </Button>
               </Link>
               <Link href="/bed-availability">
-                <Button size="lg" className="h-12 px-5 rounded-xl bg-[#1E3A8A] hover:bg-[#1E40AF] text-white gap-2 shadow-soft">
+                <Button size="lg" className="h-12 px-6 rounded-xl bg-[#1E3A8A] hover:bg-[#1E40AF] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
                   <BedDouble className="h-4 w-4" /> Check Bed Availability
                 </Button>
               </Link>
               <a href={HOSPITAL.mapsUrl} target="_blank" rel="noreferrer">
-                <Button size="lg" variant="outline" className="h-12 px-5 rounded-xl bg-white border-slate-200 text-slate-700 hover:bg-slate-50 gap-2 shadow-soft">
+                <Button size="lg" variant="outline" className="h-12 px-6 rounded-xl bg-white border-slate-200 text-slate-700 hover:bg-slate-50 gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
                   <MapPin className="h-4 w-4 text-[#1E40AF]" /> Get Directions
                 </Button>
               </a>
@@ -208,21 +229,22 @@ const Home = () => {
 
         {/* Quick action strip */}
         <div className="relative container pb-10 md:pb-14">
-          <div className="rounded-2xl bg-white border border-slate-100 shadow-card p-4 md:p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+          <div className="rounded-2xl bg-white border border-slate-100 shadow-card p-5 md:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {quickActions.map((q) => (
               <Link
                 key={q.title}
                 href={q.href}
-                className="group flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition"
+                className="group flex items-start gap-4 p-3 md:p-4 rounded-xl hover:bg-slate-50 hover:-translate-y-0.5 transition-all"
               >
-                <span className={`inline-flex items-center justify-center h-11 w-11 rounded-xl shrink-0 ${q.iconBg}`}>
-                  <q.icon className="h-5 w-5" />
+                <span className={`inline-flex items-center justify-center h-13 w-13 md:h-14 md:w-14 rounded-2xl shrink-0 ${q.iconBg} group-hover:scale-105 transition-transform`}
+                  style={{ height: '3.25rem', width: '3.25rem' }}>
+                  <q.icon className="h-6 w-6 md:h-7 md:w-7" />
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 pt-0.5">
                   <div className="font-heading font-bold text-slate-900 text-[15px] md:text-base group-hover:text-[#1E40AF] transition">
                     {q.title}
                   </div>
-                  <div className="text-xs md:text-sm text-slate-500 leading-snug mt-0.5">
+                  <div className="text-xs md:text-sm text-slate-500 leading-snug mt-1">
                     {q.desc}
                   </div>
                 </div>
