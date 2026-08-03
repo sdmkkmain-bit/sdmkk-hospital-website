@@ -120,9 +120,9 @@ const Home = () => {
     <>
       {/* HERO - premium full-bleed split */}
       <section className="relative bg-white overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,45%)_minmax(0,55%)] items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,45%)_minmax(0,55%)] items-stretch lg:min-h-[740px]">
           {/* LEFT — content on white, aligned to container padding */}
-          <div className="px-5 md:px-8 lg:pl-[max(1.5rem,calc((100vw-1400px)/2+1.5rem))] lg:pr-10 py-14 md:py-16 lg:py-20 flex flex-col justify-center animate-fade-in-up">
+          <div className="px-5 md:px-8 lg:pl-[max(1.5rem,calc((100vw-1400px)/2+1.5rem))] lg:pr-10 py-14 md:py-16 lg:py-12 flex flex-col justify-center animate-fade-in-up">
             {/* Trust badge */}
             <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 pl-2 pr-3 py-1.5 text-xs md:text-sm shadow-soft self-start">
               <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[#1E40AF]/10 text-[#173F8A]">
@@ -213,21 +213,23 @@ const Home = () => {
           </div>
 
           {/* RIGHT — full-bleed hospital image, no card / no shadow */}
-          <div className="relative min-h-[380px] sm:min-h-[440px] lg:min-h-full">
+          <div className="relative min-h-[380px] sm:min-h-[440px] lg:min-h-full overflow-hidden">
             <Image
               src={HOSPITAL.heroImage}
               alt="Shree Dombivali Manav Kalyan Kendra Charitable Hospital"
               fill
               priority
-              className="object-cover object-center"
+              className="object-cover scale-[1.06] transition-transform duration-700"
+              style={{ objectPosition: '62% 50%' }}
               sizes="(max-width: 1024px) 100vw, 55vw"
             />
-            {/* Subtle left-edge fade only — reduced ~20% */}
+            {/* Soft blend fade — fixed 140px on the left edge only */}
             <div
-              className="hidden lg:block absolute inset-y-0 left-0 w-[8%] pointer-events-none"
+              className="hidden lg:block absolute inset-y-0 left-0 pointer-events-none"
               style={{
+                width: '140px',
                 background:
-                  'linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0) 100%)',
+                  'linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.80) 30%, rgba(255,255,255,0.50) 65%, rgba(255,255,255,0) 100%)',
               }}
             />
           </div>
