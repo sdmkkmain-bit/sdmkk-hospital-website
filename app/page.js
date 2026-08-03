@@ -69,24 +69,43 @@ const Home = () => {
         </div>
 
         <div className="relative container min-h-[86vh] md:min-h-[92vh] flex items-center py-24 md:py-28">
-          <div className="max-w-3xl text-white animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 text-xs md:text-sm font-medium mb-6">
-              <span className="h-2 w-2 rounded-full bg-[#4ADE80] animate-pulse" />
-              Registered Charitable Trust • Reg. No: {HOSPITAL.regNo}
-            </div>
-            <h1 className="font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-[1.05] tracking-tight text-balance">
-              Shree Dombivali <span className="text-[#7DD3FC]">Manav Kalyan Kendra</span>
+          <div className="max-w-4xl text-white animate-fade-in-up">
+            <h1
+              className="font-heading text-white text-4xl sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.12] md:leading-[1.1] text-balance"
+              style={{
+                fontWeight: 900,
+                letterSpacing: '0.005em',
+                textShadow: '0 4px 24px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.45)',
+              }}
+            >
+              Shree Dombivali Manav Kalyan Kendra
             </h1>
-            <p className="mt-3 text-xl md:text-2xl font-heading font-medium text-white/95">
+            <p
+              className="mt-4 md:mt-5 text-white text-2xl md:text-3xl lg:text-[34px] font-heading leading-[1.25] text-balance"
+              style={{
+                fontWeight: 800,
+                letterSpacing: '0.005em',
+                textShadow: '0 3px 18px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4)',
+              }}
+            >
               Charitable Hospital & Polyclinic
             </p>
-            <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-4 py-2 text-sm md:text-base font-semibold shadow-lg shadow-black/20">
-              <HeartHandshake className="h-4 w-4" /> {HOSPITAL.tagline}
+
+            <div className="mt-6 inline-flex items-center gap-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 px-4 py-2 text-xs md:text-sm font-medium text-white shadow-lg shadow-black/10">
+              <span className="h-2 w-2 rounded-full bg-[#4ADE80] shadow-[0_0_0_4px_rgba(74,222,128,0.2)] animate-pulse" />
+              <span className="font-semibold tracking-wide">Registered Charitable Trust</span>
+              <span className="h-3 w-px bg-white/30" />
+              <span className="text-white/90">Reg. No. {HOSPITAL.regNo}</span>
             </div>
-            <p className="mt-6 max-w-2xl text-white/85 text-base md:text-lg leading-relaxed">
-              A multi-speciality charitable hospital serving Dombivali with compassionate,
-              quality healthcare — combining corporate-grade care with the warmth of a trust.
-            </p>
+
+            <div className="mt-4">
+              <div
+                className="inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-5 py-2.5 text-sm md:text-base font-semibold text-white shadow-xl shadow-black/25 ring-1 ring-white/20"
+                style={{ letterSpacing: '0.01em' }}
+              >
+                <HeartHandshake className="h-4 w-4" /> {HOSPITAL.tagline}
+              </div>
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={`tel:${HOSPITAL.phone.replace(/\s/g,'')}`}>
