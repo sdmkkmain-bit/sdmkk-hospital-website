@@ -104,7 +104,7 @@ export default function OPDSchedulePage() {
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search by doctor name, department or qualification…"
+                placeholder="Search by doctor name or department…"
                 className="pl-10 h-11 rounded-xl border-slate-200 focus-visible:ring-[#1E40AF]/30 focus-visible:ring-offset-0"
               />
               {query && (
