@@ -6,6 +6,7 @@ import {
   Phone, MapPin, Calendar, BedDouble, ArrowRight, ShieldCheck,
   Users, Stethoscope, HeartHandshake, ChevronRight, Clock, Award,
   Image as ImageIcon, FileCheck2, UserSquare2, Building2, Info, HeartPulse, Heart,
+  CalendarCheck,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { HOSPITAL } from '@/lib/site'
@@ -129,16 +130,17 @@ const Home = () => {
             className="object-cover"
             sizes="100vw"
           />
-          {/* Lighter overlay so the building shows more */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-white/0 md:from-white/92 md:via-white/65 md:to-transparent" />
-          <div className="absolute inset-0 bg-white/25 md:hidden" />
+          {/* Soft glass overlay — keeps the building bright while text stays readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/92 via-white/70 to-white/10 md:from-white/88 md:via-white/55 md:to-white/0" />
+          <div className="absolute inset-y-0 left-0 w-full md:w-3/4 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-white/20 md:hidden" />
         </div>
 
         <div className="relative container py-16 md:py-24 lg:py-28">
           <div className="max-w-[760px] lg:max-w-[820px] animate-fade-in-up">
             {/* Trust badge */}
             <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 pl-2 pr-3 py-1.5 text-xs md:text-sm shadow-soft">
-              <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[#1E40AF]/10 text-[#1E40AF]">
+              <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[#1E40AF]/10 text-[#173F8A]">
                 <ShieldCheck className="h-3.5 w-3.5" />
               </span>
               <span className="font-semibold text-slate-700">Registered Charitable Trust</span>
@@ -148,15 +150,15 @@ const Home = () => {
 
             {/* Premium Serif Title */}
             <h1
-              className="mt-7 font-serif text-[#1E3A8A] text-[42px] sm:text-5xl md:text-[58px] lg:text-[68px] leading-[1.08] md:leading-[1.06] text-balance"
+              className="mt-7 font-serif text-[#173F8A] text-[42px] sm:text-5xl md:text-[58px] lg:text-[68px] leading-[1.08] md:leading-[1.05] text-balance"
               style={{ fontWeight: 700, letterSpacing: '-0.005em' }}
             >
               Shree Dombivali<br className="hidden sm:block" /> Manav Kalyan Kendra
             </h1>
 
-            {/* Subtitle */}
+            {/* Subtitle - clean sans */}
             <p
-              className="mt-3 font-serif italic text-[#1E40AF] text-xl md:text-2xl lg:text-[28px] leading-snug"
+              className="mt-3 font-heading text-slate-700 text-lg md:text-xl lg:text-[22px]"
               style={{ fontWeight: 500, letterSpacing: '0.005em' }}
             >
               Charitable Hospital &amp; Polyclinic
@@ -166,7 +168,7 @@ const Home = () => {
             <div className="mt-5">
               <div className="inline-flex items-center gap-2 rounded-full bg-white border border-green-200 pl-2 pr-4 py-1.5 shadow-soft">
                 <span className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-[#16A34A] text-white">
-                  <Heart className="h-3.5 w-3.5 fill-white" />
+                  <HeartHandshake className="h-3.5 w-3.5" />
                 </span>
                 <span className="font-heading font-bold text-[#16A34A] text-sm md:text-base tracking-wide">
                   Corporate Care at Charitable Rate
@@ -178,23 +180,23 @@ const Home = () => {
             <p className="mt-6 text-slate-600 text-base md:text-lg leading-[1.75] max-w-2xl">
               Serving the community with quality healthcare, experienced doctors and modern
               medical facilities — where compassionate treatment meets{' '}
-              <span className="font-semibold text-[#16A34A]">Affordable Care</span>.
+              <span className="font-semibold text-[#16A34A]">affordable care</span>.
             </p>
 
             {/* Establishment info row */}
-            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm md:text-[15px]">
-              <div className="inline-flex items-center gap-2 text-slate-700">
-                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-rose-50 text-[#E11D48]">
-                  <Heart className="h-4 w-4 fill-[#E11D48]" />
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm md:text-[15px] text-slate-700">
+              <div className="inline-flex items-center gap-2">
+                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-[#173F8A]">
+                  <CalendarCheck className="h-4 w-4" />
                 </span>
                 <span>
-                  <span className="text-slate-500">Serving the Community</span>{' '}
-                  <span className="font-heading font-bold text-slate-900">Since 1984</span>
+                  <span className="text-slate-500">Established Since</span>{' '}
+                  <span className="font-heading font-bold text-slate-900">1984</span>
                 </span>
               </div>
               <span className="hidden md:inline h-4 w-px bg-slate-300" />
-              <div className="inline-flex items-center gap-2 text-slate-700">
-                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-[#1E40AF]">
+              <div className="inline-flex items-center gap-2">
+                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-[#173F8A]">
                   <MapPin className="h-4 w-4" />
                 </span>
                 <span className="font-heading font-semibold">Dombivli, Maharashtra</span>
@@ -214,13 +216,13 @@ const Home = () => {
                 </Button>
               </Link>
               <Link href="/bed-availability">
-                <Button size="lg" className="h-12 px-6 rounded-xl bg-[#1E3A8A] hover:bg-[#1E40AF] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
+                <Button size="lg" className="h-12 px-6 rounded-xl bg-[#173F8A] hover:bg-[#1E40AF] text-white gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
                   <BedDouble className="h-4 w-4" /> Check Bed Availability
                 </Button>
               </Link>
               <a href={HOSPITAL.mapsUrl} target="_blank" rel="noreferrer">
                 <Button size="lg" variant="outline" className="h-12 px-6 rounded-xl bg-white border-slate-200 text-slate-700 hover:bg-slate-50 gap-2 shadow-soft hover:shadow-hover hover:-translate-y-0.5 transition-all">
-                  <MapPin className="h-4 w-4 text-[#1E40AF]" /> Get Directions
+                  <MapPin className="h-4 w-4 text-[#173F8A]" /> Get Directions
                 </Button>
               </a>
             </div>
@@ -236,12 +238,14 @@ const Home = () => {
                 href={q.href}
                 className="group flex items-start gap-4 p-3 md:p-4 rounded-xl hover:bg-slate-50 hover:-translate-y-0.5 transition-all"
               >
-                <span className={`inline-flex items-center justify-center h-13 w-13 md:h-14 md:w-14 rounded-2xl shrink-0 ${q.iconBg} group-hover:scale-105 transition-transform`}
-                  style={{ height: '3.25rem', width: '3.25rem' }}>
-                  <q.icon className="h-6 w-6 md:h-7 md:w-7" />
+                <span
+                  className={`inline-flex items-center justify-center rounded-2xl shrink-0 ${q.iconBg} group-hover:scale-105 transition-transform`}
+                  style={{ height: '3.5rem', width: '3.5rem' }}
+                >
+                  <q.icon className="h-7 w-7" />
                 </span>
                 <div className="min-w-0 pt-0.5">
-                  <div className="font-heading font-bold text-slate-900 text-[15px] md:text-base group-hover:text-[#1E40AF] transition">
+                  <div className="font-heading font-bold text-slate-900 text-[15px] md:text-base group-hover:text-[#173F8A] transition">
                     {q.title}
                   </div>
                   <div className="text-xs md:text-sm text-slate-500 leading-snug mt-1">
