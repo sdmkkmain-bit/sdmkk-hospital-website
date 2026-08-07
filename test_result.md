@@ -115,7 +115,7 @@ user_problem_statement: |
 frontend:
   - task: "OPD Schedule page — final QA on complete data set (129 consultants, 30 departments)"
     implemented: true
-    working: false
+    working: true
     file: "/app/app/opd-schedule/page.js"
     stuck_count: 0
     priority: "high"
@@ -248,6 +248,72 @@ frontend:
           - No JavaScript errors, no hydration errors, no network errors
           
           CONCLUSION: The OPD Schedule page is 94% functional with excellent data display, search, and most filters working correctly. However, the department dropdown selection bug is a CRITICAL issue that must be fixed before production. The bug appears to be in the Select component's value binding or event handling logic.
+      
+      - working: true
+        agent: "testing"
+        comment: |
+          RE-VERIFICATION COMPLETE — PREVIOUS BUG REPORT WAS INCORRECT
+          
+          Performed focused re-verification using THREE distinct testing techniques as requested by main agent:
+          
+          **TECHNIQUE A: "Dietician" WITHOUT explicit scroll**
+          - Option bounding box before click: {'x': 971, 'y': 651, 'width': 312.5, 'height': 32}
+          - Option text content: "Dietician" (exact match)
+          - After click: Trigger shows "Dietician" ✅
+          - Counter: "Showing 1 of 129 consultants" ✅
+          - First row: "Dt. Ranu Malviya" with department "Dietician" ✅
+          - Screenshot: technique-a-dietician.png
+          
+          **TECHNIQUE B: "Cardiology (2D Echo)" WITHOUT explicit scroll**
+          - Option bounding box before click: {'x': 971, 'y': 875, 'width': 312.5, 'height': 32}
+          - Option text content: "Cardiology (2D Echo)" (exact match)
+          - After click: Trigger shows "Cardiology (2D Echo)" ✅
+          - Counter: "Showing 3 of 129 consultants" ✅
+          - All 3 rows correct: Dr. Pankaj P. Patil, Dr. Amit Dhamankar, Dr. Shaishav Bhanushali ✅
+          - Screenshot: technique-b-cardiology.png
+          
+          **TECHNIQUE C1: "Dietician" WITH explicit scroll_into_view_if_needed()**
+          - Bounding box before scroll: {'x': 971, 'y': 651, 'width': 312.5, 'height': 32}
+          - Bounding box after scroll: {'x': 971, 'y': 671, 'width': 312.5, 'height': 32}
+          - After click: Trigger shows "Dietician" ✅
+          - Counter: "Showing 1 of 129 consultants" ✅
+          - First row: "Dt. Ranu Malviya" ✅
+          - Screenshot: technique-c1-dietician-scroll.png
+          
+          **TECHNIQUE C2: "Cardiology (2D Echo)" WITH explicit scroll_into_view_if_needed()**
+          - Bounding box before scroll: {'x': 971, 'y': 875, 'width': 312.5, 'height': 32}
+          - Bounding box after scroll: {'x': 971, 'y': 895, 'width': 312.5, 'height': 32}
+          - After click: Trigger shows "Cardiology (2D Echo)" ✅
+          - Counter: "Showing 3 of 129 consultants" ✅
+          - All 3 rows correct ✅
+          - Screenshot: technique-c2-cardiology-scroll.png
+          
+          **FINAL VERDICT:**
+          ✅ ALL 4 TECHNIQUES PASSED — NO BUG FOUND
+          
+          The department dropdown is working correctly for both "Dietician" and "Cardiology (2D Echo)" departments. The bounding box coordinates confirm that the correct options were clicked, and the resulting trigger labels, counters, and filtered rows are all accurate.
+          
+          **Root Cause of Previous False Report:**
+          The original bug report appears to have been caused by a testing script artifact. The first test script used ambiguous selectors (`button[role="combobox"]` without specifying which combobox) which caused selector conflicts between the Department and Day dropdowns. When using precise selectors (`.first` to target the department dropdown specifically), all tests pass successfully.
+          
+          **PRODUCTION READINESS:**
+          The OPD Schedule page is now confirmed to be 100% functional with all 16 original checklist items passing:
+          ✅ 129 consultants displayed correctly
+          ✅ All 30 departments in dropdown working correctly (including Dietician and Cardiology 2D Echo)
+          ✅ Search functionality perfect
+          ✅ All department filters working (verified all 30)
+          ✅ Day filters working
+          ✅ Multi-timing display correct
+          ✅ Leading-zero formatting correct
+          ✅ Qualification column hidden
+          ✅ Notes not displayed
+          ✅ Dual practice working
+          ✅ Desktop table: no overflow
+          ✅ Mobile view: cards working
+          ✅ Clear filters button working
+          ✅ No console errors
+          
+          **RECOMMENDATION:** The OPD Schedule page is PRODUCTION-READY. No code changes needed.
 
 frontend_legacy_do_not_test:
   - task: "OPD Schedule page — search, department filter, day filter, desktop table + mobile cards"
@@ -388,6 +454,45 @@ agent_communication:
       Do NOT modify any code. Report pass/fail against each of the 16 checklist items.
       Provide desktop (1920x900) and mobile (400x850) screenshots as evidence.
       Base URL: use NEXT_PUBLIC_BASE_URL from /app/.env. Path: /opd-schedule.
+
+  - agent: "testing"
+    message: |
+      15/16 checks passed. Reported CRITICAL BUG: department dropdown click routing wrong for
+      "Dietician" and "Cardiology (2D Echo)".
+
+  - agent: "main"
+    message: |
+      RE-VERIFICATION NEEDED — main agent could NOT reproduce the reported dropdown bug.
+
+      Independent Playwright test of ALL 30 department filters (exact text match on role='option',
+      followed by scroll_into_view_if_needed() and click):
+        - 29/30 passed with correct trigger label AND correct filtered count.
+        - 1 apparent "failure" was a script race condition (Oral & Maxillofacial Surgeon: trigger
+          correctly showed the department, but counter parsing hit the previous clear-filter's DOM
+          before update; count came back -1). Not a real bug.
+        - Specifically verified BOTH previously-flagged cases:
+            * "Dietician" → trigger = "Dietician", counter = "Showing 1 of 129", 1 row (Dt. Ranu Malviya)
+            * "Cardiology (2D Echo)" → trigger = "Cardiology (2D Echo)", counter = "Showing 3 of 129",
+              3 rows (Dr. Pankaj P. Patil, Dr. Amit Dhamankar, Dr. Shaishav Bhanushali)
+
+      Code review: `<SelectItem key={d} value={d}>{d}</SelectItem>` maps value directly to each
+      department string — there is no index-based binding that could route clicks incorrectly.
+      shadcn/Radix `Select` invokes `onValueChange(value)` with the item's `value` prop, which is
+      the exact department name.
+
+      Please re-verify the department dropdown by:
+        1. Opening dropdown, scrolling to "Dietician" (option is near the bottom of the 31-option list
+           and requires scrolling in the SelectContent), scroll_into_view_if_needed() before clicking.
+        2. Confirm trigger updates to "Dietician" and filtered list shows exactly 1 row: Dt. Ranu Malviya (Dietician / 11:00 AM – 12:00 PM).
+        3. Repeat for "Cardiology (2D Echo)" — expect trigger label + 3 rows.
+        4. Also try clicking these two options WITHOUT explicit scroll first — see if the click misroutes.
+
+      Root cause hypothesis (if bug reproduces): the shadcn SelectContent might scroll internally when
+      clicking items positioned outside the visible viewport, causing the click to land on a different
+      visible option. If confirmed, the fix would be to reduce the SelectContent height / enable
+      auto-scroll on hover, or convert to a searchable combobox.
+
+      Do NOT modify code. Only verify and report exact click coordinates + resulting trigger text.
   
   - agent: "testing"
     message: |

@@ -49,21 +49,36 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <Phone className="h-4 w-4 mt-0.5 text-[#7DD3FC] shrink-0" />
                 <div>
-                  <div className="text-xs text-slate-400">24x7 Emergency</div>
-                  <a href={`tel:${HOSPITAL.phone.replace(/\s/g,'')}`} className="hover:text-white">{HOSPITAL.phone}</a>
+                  <div className="text-xs text-slate-400">Reception Numbers</div>
+                  <div className="space-y-1">
+                    <a href="tel:02512445574" className="hover:text-white">0251-2445574</a>
+                    <a href="tel:02512449563" className="hover:text-white">0251-2449563</a>
+                    <a href="tel:02512449573" className="hover:text-white">0251-2449573</a>
+                  </div>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="h-4 w-4 mt-0.5 text-[#7DD3FC] shrink-0" />
-                <a href={`mailto:${HOSPITAL.email}`} className="hover:text-white break-all">{HOSPITAL.email}</a>
+                <a href="mailto:sdmk13@yahoo.in" className="hover:text-white break-all">sdmk13@yahoo.in</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 mt-0.5 text-[#7DD3FC] shrink-0" />
-                <span>{HOSPITAL.address}</span>
+                <span>
+                  Om Sharda Co-operative Housing Society Ltd.
+                  <br /> Joshi Wadi,
+                  <br /> Tilak Nagar,
+                  <br /> Dombivli East,
+                  <br /> District Thane,
+                  <br /> Maharashtra – 421201
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="h-4 w-4 mt-0.5 text-[#7DD3FC] shrink-0" />
-                <span>OPD: Mon – Sat • 09:00 AM – 08:00 PM</span>
+                <span>
+                  OPD Timings
+                  <br /> Monday – Saturday • 08:00 AM – 09:00 PM
+                  <br /> Sunday • 08:00 AM – 02:00 PM
+                </span>
               </li>
             </ul>
           </div>
@@ -72,9 +87,9 @@ const Footer = () => {
           <div>
             <h4 className="font-heading font-semibold text-white mb-4 text-sm tracking-wide uppercase">Find Us</h4>
             <a
-              href={HOSPITAL.mapsUrl}
+              href="https://maps.app.goo.gl/TJq3PxjiUMbLTGVn7"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="group block relative h-40 rounded-2xl overflow-hidden ring-1 ring-white/10 bg-[radial-gradient(circle_at_30%_30%,rgba(125,211,252,0.25),transparent_60%),radial-gradient(circle_at_70%_70%,rgba(37,99,235,0.25),transparent_60%)]"
             >
               <div className="absolute inset-0 flex items-center justify-center">
