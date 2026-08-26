@@ -35,7 +35,7 @@ export default function ManagingTrustee() {
               <div className="relative w-full">
 
                 <Image
-                  src="/images/managing-trustee.jpg"
+                  src="/images/trustees/Dr. Chandresh H. Pasad - Managing  Trustee.png"
                   alt="Dr. Chandresh H. Pasad"
                   width={500}
                   height={650}

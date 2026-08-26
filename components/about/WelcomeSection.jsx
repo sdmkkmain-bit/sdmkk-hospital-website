@@ -11,7 +11,7 @@ export default function WelcomeSection() {
 
           <div>
             <Image
-              src="/images/hospital-logo.png"
+              src="/images/logos/hospital-logo.png"
               alt="Hospital Logo"
               width={650}
               height={650}
