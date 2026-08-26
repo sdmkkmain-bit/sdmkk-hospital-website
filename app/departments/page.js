@@ -1,17 +1,24 @@
-import PageHeader from '@/components/site/PageHeader'
-import PlaceholderSection from '@/components/site/PlaceholderSection'
-
-export const metadata = { title: 'Departments — SDMKK Charitable Hospital' }
+import HeroSection from "@/components/departments/HeroSection";
+import DepartmentIntro from "@/components/departments/DepartmentIntro";
+import ScopeOfServices from "@/components/departments/ScopeOfServices";
+import MedicalEquipment from "@/components/departments/MedicalEquipment";
+import ClinicalDepartments from "@/components/departments/ClinicalDepartments";
+import DepartmentCTA from "@/components/departments/DepartmentCTA";
 
 export default function DepartmentsPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Multi-Speciality Care"
-        title="Our Departments"
-        description="Comprehensive care across a wide range of specialities — delivered by experienced consultants and compassionate teams."
-      />
-      <PlaceholderSection title="Department Directory" note="A structured listing of departments, specialities and services will be added in the next phase." />
+      <HeroSection />
+
+      <DepartmentIntro />
+
+      <ScopeOfServices />
+
+      <MedicalEquipment />
+
+      <ClinicalDepartments />
+
+      <DepartmentCTA />
     </>
-  )
+  );
 }

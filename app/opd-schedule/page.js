@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import {
-  Search, Filter, Calendar, Users, X, Check, Minus, Stethoscope, Clock, Building2, GraduationCap
+  Search, Filter, Calendar, Users, X, Check, Minus, Stethoscope, Clock, Building2, GraduationCap, Info
 } from 'lucide-react'
 import PageHeader from '@/components/site/PageHeader'
 import { Input } from '@/components/ui/input'
@@ -31,16 +31,34 @@ const DoctorCardMobile = ({ d, day }) => (
   <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-soft">
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
-        <h3 className="font-heading font-bold text-[#173F8A] text-lg leading-tight">{d.name}</h3>
+        <h3 className="font-heading font-bold text-[#173F8A] text-lg leading-tight">
+          {d.name}
+        </h3>
+
         <div className="mt-1 inline-flex items-center gap-1.5 text-xs text-[#1E40AF] bg-blue-50 rounded-full px-2 py-0.5 font-medium">
           <Building2 className="h-3 w-3" /> {d.department}
         </div>
+
         {d.qualification && (
           <div className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-500">
             <GraduationCap className="h-3.5 w-3.5" /> {d.qualification}
           </div>
         )}
+
+        {d.note && (
+          <div className="mt-3 inline-flex max-w-full items-start gap-1.5 rounded-lg border border-blue-100 bg-blue-50/70 px-2.5 py-1.5 text-xs leading-4 text-slate-600">
+            <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#1E40AF]" />
+
+            <span>
+              <span className="font-semibold text-[#1E40AF]">
+                Important Note:
+              </span>{" "}
+              {d.note}
+            </span>
+          </div>
+        )}
       </div>
+
       <span className="inline-flex items-center justify-center h-11 w-11 rounded-2xl bg-gradient-to-br from-[#1E40AF] to-[#0EA5E9] text-white shadow-md shrink-0">
         <Stethoscope className="h-5 w-5" />
       </span>
@@ -49,7 +67,9 @@ const DoctorCardMobile = ({ d, day }) => (
     <div className="mt-4 grid grid-cols-6 gap-1.5">
       {DAYS.map((day) => (
         <div key={day} className="flex flex-col items-center gap-1">
-          <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">{day}</span>
+          <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+            {day}
+          </span>
           <DayCell available={isAvailable(d, day)} />
         </div>
       ))}
@@ -190,14 +210,38 @@ export default function OPDSchedulePage() {
                     'border-t border-slate-100 hover:bg-blue-50/40 transition',
                     idx % 2 === 1 && 'bg-slate-50/50'
                   )}>
-                    <td className="px-5 py-4">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-br from-[#1E40AF] to-[#0EA5E9] text-white shadow shrink-0">
-                          <Stethoscope className="h-4 w-4" />
-                        </span>
-                        <span className="font-semibold text-slate-900">{d.name}</span>
-                      </div>
-                    </td>
+      <td className="px-5 py-4">
+  <div className="flex items-start gap-3">
+
+    <span className="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-br from-[#1E40AF] to-[#0EA5E9] text-white shadow shrink-0">
+      <Stethoscope className="h-4 w-4" />
+    </span>
+
+    <div className="min-w-0">
+
+      <div className="font-semibold text-slate-900 leading-5">
+        {d.name}
+      </div>
+
+      {d.note && (
+        <div className="mt-2 inline-flex max-w-full items-start gap-1.5 rounded-lg border border-blue-100 bg-blue-50/70 px-2.5 py-1.5 text-xs leading-4 text-slate-600">
+
+          <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#1E40AF]" />
+
+          <span>
+            <span className="font-semibold text-[#1E40AF]">
+              Important Note:
+            </span>{" "}
+            {d.note}
+          </span>
+
+        </div>
+      )}
+
+    </div>
+
+  </div>
+</td>
                     <td className="px-4 py-4">
                       <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#1E40AF] bg-blue-50 rounded-full px-2.5 py-1">
                         {d.department}
@@ -280,11 +324,14 @@ export default function OPDSchedulePage() {
           </div>
           <div className="flex-1">
             <div className="font-heading font-bold text-slate-900">OPD Timings Notice</div>
-            <p className="text-sm text-slate-600 mt-0.5">The schedule above is indicative. Emergency services are available 24×7. Please call the reception to confirm consultant availability on the day of your visit.</p>
+            <p className="text-sm text-slate-600 mt-0.5">The schedule above is indicative. Emergency services are available. Please call the reception to confirm consultant availability on the day of your visit.</p>
           </div>
-          <Button className="h-11 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white gap-2 shadow-soft">
-            <Users className="h-4 w-4" /> Call Reception
-          </Button>
+          <a
+  href="tel:02512449563"
+  className="inline-flex h-11 items-center justify-center rounded-xl bg-[#16A34A] px-4 text-white gap-2 shadow-soft hover:bg-[#15803D] transition"
+>
+  <Users className="h-4 w-4" /> Call Reception
+</a>
         </div>
       </section>
     </>

@@ -49,85 +49,113 @@ const Header = () => {
                 className={cn('px-1.5 py-0.5 rounded transition', lang === 'EN' ? 'bg-white/15 font-semibold' : 'opacity-80 hover:opacity-100')}
               >English</button>
               <span className="opacity-50">|</span>
-              <button
-                onClick={() => setLang('MR')}
-                className={cn('px-1.5 py-0.5 rounded transition', lang === 'MR' ? 'bg-white/15 font-semibold' : 'opacity-80 hover:opacity-100')}
-              >मराठी</button>
+              
             </div>
           </div>
         </div>
       </div>
 
       {/* Main bar */}
-      <div className="container flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="flex items-center gap-3 min-w-0">
-          <div className="relative h-12 w-12 md:h-14 md:w-14 shrink-0 rounded-full overflow-hidden ring-1 ring-slate-200 bg-white">
-            <Image
-              src={HOSPITAL.logoUrl}
-              alt="SDMKK Logo"
-              fill
-              sizes="56px"
-              className="object-contain p-0.5"
-              priority
-            />
-          </div>
-          <div className="min-w-0">
-            <div className="font-heading font-bold text-[13px] md:text-[15px] leading-tight text-[#1E40AF] truncate">
-              Shree Dombivali Manav Kalyan Kendra
-            </div>
-            <div className="text-[11px] md:text-xs text-slate-500 truncate">
-              Charitable Hospital & Polyclinic • <span className="text-[#16A34A] font-medium">{HOSPITAL.tagline}</span>
-            </div>
-          </div>
-        </Link>
+<div className="container flex items-center justify-between gap-4 py-4">
+  <Link
+    href="/"
+    className="flex items-center gap-4 min-w-0 max-md:flex-1 max-md:gap-2"
+  >
+    {/* Hospital Logo */}
+    <div className="relative h-16 w-16 md:h-[76px] md:w-[76px] max-md:h-12 max-md:w-12 shrink-0 rounded-full overflow-hidden ring-1 ring-slate-200 bg-white">
+      <Image
+        src={HOSPITAL.logoUrl}
+        alt="SDMKK Logo"
+        fill
+        sizes="64px"
+        className="object-contain p-0.5"
+        priority
+      />
+    </div>
 
-        {/* Desktop actions */}
-        <div className="hidden lg:flex items-center gap-2">
-          <a href={`tel:${HOSPITAL.phone.replace(/\s/g,'')}`}>
-            <Button size="sm" className="bg-[#16A34A] hover:bg-[#15803D] text-white gap-2 h-10 px-4 rounded-full shadow-soft">
-              <Phone className="h-4 w-4" /> Call Now
-            </Button>
-          </a>
-          <a href={HOSPITAL.mapsUrl} target="_blank" rel="noreferrer">
-            <Button size="sm" variant="outline" className="gap-2 h-10 px-4 rounded-full border-[#1E40AF] text-[#1E40AF] hover:bg-[#1E40AF] hover:text-white">
-              <MapPin className="h-4 w-4" /> Get Directions
-            </Button>
-          </a>
-        </div>
-
-        {/* Mobile toggle */}
-        <button
-          className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-slate-200 text-[#1E40AF]"
-          aria-label="Toggle menu"
-          onClick={() => setOpen(v => !v)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+    {/* Hospital Name & Tagline */}
+    <div className="min-w-0 flex-1">
+      <div className="font-heading font-bold text-[17px] md:text-[19px] max-md:text-[15px] leading-tight text-[#1E40AF]">
+        Shree Dombivali Manav Kalyan Kendra
       </div>
 
-      {/* Desktop nav */}
-      <nav className="hidden lg:block border-t border-slate-100 bg-white">
-        <div className="container flex items-center justify-center gap-1 py-1">
-          {NAV_LINKS.map(link => {
-            const active = pathname === link.href
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'relative px-4 py-3 text-sm font-medium transition-colors rounded-md',
-                  active ? 'text-[#1E40AF]' : 'text-slate-600 hover:text-[#1E40AF]'
-                )}
-              >
-                {link.label}
-                {active && (
-                  <span className="absolute left-3 right-3 -bottom-[1px] h-[3px] rounded-full bg-[#1E40AF]" />
-                )}
-              </Link>
-            )
-          })}
-        </div>
-      </nav>
+      <div className="text-[19px] md:text-[14px] max-md:text-[13px] text-slate-500 mt-1.3 max-md:mt-0.5 leading-normal max-md:leading-tight font-semibold">
+        Charitable Hospital & Polyclinic
+      </div>
+
+      <div className="text-[11px] md:text-[12px] max-md:text-[10px] text-[#16A34A] font-semibold mt-0.5 leading-normal max-md:leading-tight">
+        {HOSPITAL.tagline}
+      </div>
+    </div>
+
+    {/* NABH Entry Level Certification Logo */}
+    <div className="relative h-14 w-20 md:h-[68px] md:w-[88px] max-md:h-10 max-md:w-14 shrink-0 -ml-6 max-md:ml-0">
+      <Image
+        src="/images/logos/nabh-entry-level.png"
+        alt="NABH Entry Level Certified"
+        fill
+        sizes="88px"
+        className="object-contain"
+      />
+    </div>
+  </Link>
+
+  {/* Desktop actions */}
+  <div className="hidden lg:flex items-center gap-2">
+    <a href={`tel:${HOSPITAL.phone.replace(/\s/g,'')}`}>
+      <Button size="sm" className="bg-[#16A34A] hover:bg-[#15803D] text-white gap-2 h-10 px-4 rounded-full shadow-soft">
+        <Phone className="h-4 w-4" /> Call Now
+      </Button>
+    </a>
+
+    <a href={HOSPITAL.mapsUrl} target="_blank" rel="noreferrer">
+      <Button
+        size="sm"
+        variant="outline"
+        className="gap-2 h-10 px-4 rounded-full border-[#1E40AF] text-[#1E40AF] hover:bg-[#1E40AF] hover:text-white"
+      >
+        <MapPin className="h-4 w-4" /> Get Directions
+      </Button>
+    </a>
+  </div>
+
+  {/* Mobile toggle */}
+  <button
+    className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-slate-200 text-[#1E40AF] shrink-0"
+    aria-label="Toggle menu"
+    onClick={() => setOpen(v => !v)}
+  >
+    {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+  </button>
+</div>
+
+     {/* Desktop nav */}
+<nav className="hidden lg:block border-t border-slate-100 bg-white">
+  <div className="container flex items-center justify-center gap-1 py-1">
+    {NAV_LINKS.map(link => {
+      const active = pathname === link.href
+
+      return (
+        <Link
+          key={link.href}
+          href={link.href}
+          className={cn(
+            'relative px-4 py-4 text-sm font-medium transition-colors rounded-md',
+            active
+              ? 'text-[#1E40AF]'
+              : 'text-slate-600 hover:text-[#1E40AF]'
+          )}
+        >
+          {link.label}
+
+          {active && (
+            <span className="absolute left-3 right-3 -bottom-[1px] h-[3px] rounded-full bg-[#1E40AF]" />
+          )}
+        </Link>
+      )
+    })}
+  </div>
+</nav>
 
       {/* Mobile drawer */}
       <div className={cn(
@@ -150,8 +178,8 @@ const Header = () => {
           <div className="flex items-center gap-2 py-2 text-xs text-slate-500 border-t border-slate-100 mt-1">
             <Globe className="h-3.5 w-3.5" />
             <button onClick={() => setLang('EN')} className={cn('px-2 py-1 rounded', lang==='EN' && 'bg-[#1E40AF]/10 text-[#1E40AF] font-semibold')}>English</button>
-            <span>|</span>
-            <button onClick={() => setLang('MR')} className={cn('px-2 py-1 rounded', lang==='MR' && 'bg-[#1E40AF]/10 text-[#1E40AF] font-semibold')}>मराठी</button>
+            
+            
           </div>
           <nav className="flex flex-col pt-1">
             {NAV_LINKS.map(link => {
@@ -160,6 +188,11 @@ const Header = () => {
                 <Link
                   key={link.href}
                   href={link.href}
+                  scroll={true}
+                  onClick={() => {
+                   setOpen(false)
+                    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+                     }}
                   className={cn(
                     'flex items-center justify-between py-3 px-2 border-b border-slate-100 text-sm font-medium',
                     active ? 'text-[#1E40AF]' : 'text-slate-700'

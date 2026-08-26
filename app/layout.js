@@ -1,8 +1,7 @@
 import './globals.css'
 import { Inter, Poppins, Playfair_Display } from 'next/font/google'
 import { Providers } from './providers'
-import Header from '@/components/site/Header'
-import Footer from '@/components/site/Footer'
+import SiteChrome from '@/components/site/SiteChrome'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,14 +36,12 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{__html:'window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);'}} />
       </head>
       <body className="font-sans antialiased bg-[#F8FAFC] text-[#1F2937]">
-        <Providers>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </Providers>
-      </body>
+  <Providers>
+    <SiteChrome>
+      {children}
+    </SiteChrome>
+  </Providers>
+</body>
     </html>
   )
 }
