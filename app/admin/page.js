@@ -124,19 +124,37 @@ export default function AdminPage() {
   ========================================================
   */
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = async (e) => {
+  e.preventDefault();
 
-    /*
-      TEMPORARY DEVELOPMENT LOGIN.
+  try {
+    const response = await fetch("/api/admin-login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
 
-      Real secure authentication will be connected later.
-    */
+    const data = await response.json();
 
-    if (username.trim() && password.trim()) {
-      setLoggedIn(true);
+    if (!response.ok) {
+      alert(data.error || "Invalid username or password.");
+      return;
     }
-  };
+
+    if (data.success) {
+      setLoggedIn(true);
+      setPassword("");
+    }
+  } catch (error) {
+    console.error("Admin login error:", error);
+    alert("Unable to connect to the server. Please try again.");
+  }
+};
 
   /*
   ========================================================

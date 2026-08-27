@@ -80,8 +80,41 @@ export async function OPTIONS() {
 async function handleRoute(request, { params }) {
   const { path = [] } = await params;
 
-  const route = `/${path.join("/")}`;
+    const route = `/${path.join("/")}`;
   const method = request.method;
+
+  // =========================================================
+  // ADMIN LOGIN
+  // =========================================================
+
+  if (route === "/admin-login" && method === "POST") {
+    const body = await request.json();
+
+    const validUsername =
+      body.username === process.env.ADMIN_USERNAME;
+
+    const validPassword =
+      body.password === process.env.ADMIN_PASSWORD;
+
+    if (!validUsername || !validPassword) {
+      return handleCORS(
+        NextResponse.json(
+          {
+            success: false,
+            error: "Invalid username or password.",
+          },
+          { status: 401 }
+        )
+      );
+    }
+
+    return handleCORS(
+      NextResponse.json({
+        success: true,
+        message: "Login successful.",
+      })
+    );
+  }
 
   try {
     const database = await connectToMongo();
