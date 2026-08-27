@@ -79,12 +79,12 @@ const Header = () => {
         Shree Dombivali Manav Kalyan Kendra
       </div>
 
-      <div className="text-[19px] md:text-[14px] max-md:text-[13px] text-slate-500 mt-1.3 max-md:mt-0.5 leading-normal max-md:leading-tight font-semibold">
+      <div className="text-[19px] md:text-[14px] max-md:text-[12px] text-slate-500 mt-1.3 max-md:mt-0.5 leading-normal max-md:leading-tight font-semibold">
         Charitable Hospital & Polyclinic
       </div>
 
-      <div className="text-[11px] md:text-[12px] max-md:text-[10px] text-[#16A34A] font-semibold mt-0.5 leading-normal max-md:leading-tight">
-        {HOSPITAL.tagline}
+      <div className="text-[08px] md:text-[12px] max-md:text-[08px] text-[#16A34A] font-semibold mt-0.5 leading-normal max-md:leading-tight">
+        {HOSPITAL.tagline.toUpperCase()}
       </div>
     </div>
 
@@ -191,7 +191,6 @@ const Header = () => {
                   scroll={true}
                   onClick={() => {
                    setOpen(false)
-                    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
                      }}
                   className={cn(
                     'flex items-center justify-between py-3 px-2 border-b border-slate-100 text-sm font-medium',
