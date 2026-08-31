@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+
 import {
   Phone,
   Mail,
@@ -9,11 +9,10 @@ import {
   Heart,
   Navigation,
   ArrowRight,
-  X,
 } from "lucide-react";
 
 export default function Footer() {
-  const [showEgg, setShowEgg] = useState(false);
+ 
 
   const quickLinks = [
     ["Home", "/"],
@@ -34,13 +33,7 @@ export default function Footer() {
     
   ];
 
-  const openEgg = () => {
-    setShowEgg(true);
-  };
-
-  const closeEgg = () => {
-    setShowEgg(false);
-  };
+  
 
   return (
     <>
@@ -403,19 +396,15 @@ export default function Footer() {
                   MONTY EASTER EGG
               ================================================== */}
 
-              <button
-                type="button"
-                onClick={openEgg}
-                className="group cursor-pointer border-0 bg-transparent text-xs text-blue-300 transition-all duration-300 hover:text-white"
-              >
+           <div className="group cursor-default text-center">
+  <p className="text-xs text-blue-300 transition-all duration-300 group-hover:text-blue-100">
+  Website Designed &amp; Developed by{" "}
 
-                Website Designed &amp; Developed by{" "}
-
-                <span className="font-bold text-white transition-all duration-300 group-hover:text-blue-200 group-hover:tracking-wide">
-                  Monty Nandyal
-                </span>
-
-              </button>
+  <span className="font-bold text-white transition-colors duration-300 group-hover:text-white">
+    Monty Nandyal
+  </span>
+</p>
+</div>
 
             </div>
 
@@ -425,158 +414,7 @@ export default function Footer() {
 
       </footer>
 
-
-      {/* =====================================================
-          EASTER EGG
-      ====================================================== */}
-
-      {showEgg && (
-
-        <div
-          className="fixed inset-0 z-[99999] flex items-center justify-center bg-slate-950/75 px-4 backdrop-blur-md"
-          onClick={closeEgg}
-        >
-
-          {/* =========================
-              EGG
-          ========================== */}
-
-          <div className="egg-wrapper pointer-events-none absolute left-1/2 top-1/2 h-36 w-28 -translate-x-1/2 -translate-y-1/2">
-
-            <div className="egg-top absolute left-1/2 top-0 h-24 w-24 -translate-x-1/2 rounded-[55%_55%_45%_45%] border-4 border-white bg-white shadow-2xl">
-
-              <div className="absolute bottom-3 left-1/2 h-2 w-10 -translate-x-1/2 rounded-full bg-slate-300" />
-
-            </div>
-
-
-            <div className="egg-bottom absolute bottom-0 left-1/2 h-20 w-28 -translate-x-1/2 rounded-[40%_40%_55%_55%] border-4 border-white bg-white shadow-2xl">
-
-              <div className="absolute left-1/2 top-2 h-9 w-9 -translate-x-1/2 rounded-full bg-yellow-300 shadow-lg" />
-
-            </div>
-
-
-            {/* Crack */}
-
-            <div className="absolute left-1/2 top-[56%] z-20 h-1 w-20 -translate-x-1/2 rotate-[-8deg] bg-slate-400" />
-
-          </div>
-
-
-          {/* =========================
-              POPUP
-          ========================== */}
-
-          <div
-            className="egg-popup fixed left-1/2 top-1/2 z-[100000] max-h-[82vh] w-[calc(100%-32px)] max-w-md -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-[2rem] border border-white/50 bg-white text-center shadow-[0_35px_100px_rgba(0,0,0,0.5)]"
-            onClick={(event) => event.stopPropagation()}
-          >
-
-            <button
-              type="button"
-              onClick={closeEgg}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-all hover:rotate-90 hover:bg-slate-200 hover:text-slate-900"
-              aria-label="Close"
-            >
-              <X className="h-4 w-4" />
-            </button>
-
-
-            <div className="p-8 md:p-10">
-
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-3xl shadow-inner">
-                🥚
-              </div>
-
-
-              <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.35em] text-blue-600">
-                SECRET DISCOVERED
-              </p>
-
-
-              <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">
-                Well... hello there! 👋
-              </h2>
-
-
-              <p className="mt-5 text-base leading-7 text-slate-600">
-
-                You actually clicked my name.
-
-                <br />
-
-                <span className="font-bold text-slate-900">
-                  I&apos;m Monty Nandyal. 😄
-                </span>
-
-              </p>
-
-
-              <div className="mt-6 rounded-2xl bg-blue-50 p-5 text-left">
-
-                <p className="text-sm font-bold text-blue-700">
-                  🥚 A tiny secret from Monty
-                </p>
-
-
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-
-                  I was supposed to be building a hospital website...
-
-                  <br />
-
-                  but apparently I couldn&apos;t resist hiding an
-                  Easter egg in the footer. 😂
-
-                </p>
-
-              </div>
-
-
-              <p className="mt-6 text-sm leading-6 italic text-slate-500">
-
-                If you found this, congratulations.
-
-                <br />
-
-                You are officially the one who actually
-                clicked
-
-                <span className="font-semibold text-slate-700">
-                  {" "}“Website Designed &amp; Developed by Monty Nandyal”.
-                </span>
-
-              </p>
-
-
-              <div className="mt-7 flex justify-center gap-2 text-2xl">
-                🥚 💻 🏥 😂
-              </div>
-
-
-              <p className="mt-4 text-xs text-slate-400">
-                P.S. — Please don&apos;t tell anyone. 🤫
-              </p>
-
-
-              <button
-                type="button"
-                onClick={closeEgg}
-                className="mt-7 rounded-full bg-blue-600 px-7 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
-              >
-                Okay, I&apos;ll keep the secret 🤫
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      )}
-
-
+      
       {/* =====================================================
           FOOTER ANIMATIONS
       ====================================================== */}
@@ -607,135 +445,42 @@ export default function Footer() {
         }
 
 
-        @keyframes footerReveal {
-          from {
-            opacity: 0;
-            transform: translateY(25px);
-          }
+      .footer-glow-one {
+  animation: footerFloatOne 9s ease-in-out infinite;
+}
 
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+.footer-glow-two {
+  animation: footerFloatTwo 11s ease-in-out infinite;
+}
 
+.footer-reveal {
+  animation: footerReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
 
-        @keyframes eggTop {
+.footer-delay-1 {
+  animation-delay: 0.12s;
+}
 
-          0% {
-            transform: translateX(-50%) translateY(0) rotate(0deg);
-          }
+.footer-delay-2 {
+  animation-delay: 0.24s;
+}
 
-          45% {
-            transform: translateX(-50%) translateY(0) rotate(0deg);
-          }
+.footer-delay-3 {
+  animation-delay: 0.36s;
+}
 
-          100% {
-            transform: translateX(-75%) translateY(-70px) rotate(-28deg);
-          }
+@media (prefers-reduced-motion: reduce) {
 
-        }
+  .footer-glow-one,
+  .footer-glow-two,
+  .footer-reveal {
+    animation: none !important;
+  }
 
+}
 
-        @keyframes eggBottom {
+        
 
-          0% {
-            transform: translateX(-50%) translateY(0) rotate(0deg);
-          }
-
-          45% {
-            transform: translateX(-50%) translateY(0) rotate(0deg);
-          }
-
-          100% {
-            transform: translateX(-25%) translateY(70px) rotate(25deg);
-          }
-
-        }
-
-
-        @keyframes eggPopup {
-
-          0% {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.55);
-          }
-
-          70% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.04);
-          }
-
-          100% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-          }
-
-        }
-
-
-        .footer-glow-one {
-          animation: footerFloatOne 9s ease-in-out infinite;
-        }
-
-
-        .footer-glow-two {
-          animation: footerFloatTwo 11s ease-in-out infinite;
-        }
-
-
-        .footer-reveal {
-          animation: footerReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-
-        .footer-delay-1 {
-          animation-delay: 0.12s;
-        }
-
-
-        .footer-delay-2 {
-          animation-delay: 0.24s;
-        }
-
-
-        .footer-delay-3 {
-          animation-delay: 0.36s;
-        }
-
-
-        .egg-top {
-          animation: eggTop 1.2s ease-out forwards;
-        }
-
-
-        .egg-bottom {
-          animation: eggBottom 1.2s ease-out forwards;
-        }
-
-
-        .egg-popup {
-          opacity: 0;
-          animation: eggPopup 0.55s ease-out 0.95s forwards;
-        }
-
-
-        @media (prefers-reduced-motion: reduce) {
-
-          .footer-glow-one,
-          .footer-glow-two,
-          .footer-reveal,
-          .egg-top,
-          .egg-bottom,
-          .egg-popup {
-            animation: none !important;
-          }
-
-          .egg-popup {
-            opacity: 1;
-          }
-
-        }
 
       `}</style>
     </>
