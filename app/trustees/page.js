@@ -6,9 +6,10 @@ import {
 } from 'lucide-react'
 
 export const metadata = {
-  title: 'Board of Trustees — SDMKK Charitable Hospital',
+  title:
+    'Board of Trustees | Shree Dombivli Manav Kalyan Kendra Charitable Hospital',
   description:
-    'Meet the Board of Trustees of Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic.',
+    'Meet the Board of Trustees of Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic in Dombivli, Maharashtra, guiding its mission of accessible, affordable and compassionate healthcare.',
 }
 
 const trustees = [
