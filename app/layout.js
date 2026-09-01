@@ -37,6 +37,35 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{__html:'window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);'}} />
       </head>
       <body className="font-sans antialiased bg-[#F8FAFC] text-[#1F2937]">
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Hospital",
+
+      "name": "Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic",
+
+      "url": "https://sdmkkhospital.com",
+
+      "telephone": [
+        "0251-2445574",
+        "0251-2449573",
+        "0251-2449563"
+      ],
+
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress":
+          "Ground, 1st & 2nd Floor, Sharda Apartment, TATA Power Lane, Joshi Wadi, Tilak Nagar, Dombivli East",
+        "addressLocality": "Dombivli",
+        "addressRegion": "Maharashtra",
+        "postalCode": "421201",
+        "addressCountry": "IN"
+      }
+    }),
+  }}
+/>
   <Providers>
     <SiteChrome>
       {children}
