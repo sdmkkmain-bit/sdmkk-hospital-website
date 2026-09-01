@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
 
       "name": "Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic",
 
-      "url": "https://sdmkkhospital.com",
+      "url": "https://www.sdmkkhospital.com",
 
       "image": "https://www.sdmkkhospital.com/images/logos/hospital.png",
 
