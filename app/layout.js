@@ -48,6 +48,10 @@ export default function RootLayout({ children }) {
 
       "url": "https://sdmkkhospital.com",
 
+      "image": "https://www.sdmkkhospital.com/images/logos/hospital.png",
+      
+      "priceRange": "₹",
+
       "telephone": [
         "0251-2445574",
         "0251-2449573",
