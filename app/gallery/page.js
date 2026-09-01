@@ -170,9 +170,7 @@ export default function GalleryPage() {
   };
 
   useEffect(() => {
-    document.title = "Gallery — SDMKK Charitable Hospital";
-
-    const handleKeyDown = (event) => {
+        const handleKeyDown = (event) => {
       if (event.key === "ArrowRight") {
         goNext();
       }
