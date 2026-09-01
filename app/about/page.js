@@ -8,7 +8,11 @@ import TrustSection from "@/components/about/TrustSection";
 
 
 export const metadata = {
-  title: "About | SDMKK Charitable Hospital",
+  title:
+    "About Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic",
+
+  description:
+    "Learn about Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic, its journey, charitable mission, vision, healthcare facilities and commitment to serving the Dombivli community.",
 };
 
 export default function AboutPage() {
