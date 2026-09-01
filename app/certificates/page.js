@@ -1,7 +1,9 @@
 import PageHeader from '@/components/site/PageHeader'
 
 export const metadata = {
-  title: 'Certificates — SDMKK Charitable Hospital',
+  title: 'Certificates & Accreditations | SDMKK Charitable Hospital Dombivli',
+  description:
+    'View official certificates, accreditations and registrations of Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic in Dombivli, Maharashtra.',
 }
 
 const certifications = [
