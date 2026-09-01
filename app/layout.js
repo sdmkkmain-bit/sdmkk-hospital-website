@@ -25,11 +25,39 @@ const playfair = Playfair_Display({
 })
 
 export const metadata = {
-  title: 'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic',
-  description:
-    'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic is a multi-speciality charitable hospital in Dombivli, Maharashtra, providing quality healthcare at charitable rates.',
-}
+  metadataBase: new URL('https://www.sdmkkhospital.com'),
 
+  title:
+    'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic',
+
+  description:
+  'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic is a multi-speciality charitable hospital in Dombivli, Maharashtra, providing quality healthcare at charitable rates.',
+
+  openGraph: {
+    title:
+      'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic',
+
+    description:
+      'A multi-speciality charitable hospital in Dombivli, Maharashtra, providing quality healthcare at charitable rates.',
+
+    url: 'https://www.sdmkkhospital.com',
+
+    siteName:
+      'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic',
+
+    images: [
+      {
+        url: '/images/logos/hospital.png',
+        width: 1200,
+        height: 630,
+        alt: 'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic',
+      },
+    ],
+
+    locale: 'en_IN',
+    type: 'website',
+  },
+}
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} ${playfair.variable}`}>
@@ -49,7 +77,7 @@ export default function RootLayout({ children }) {
       "url": "https://sdmkkhospital.com",
 
       "image": "https://www.sdmkkhospital.com/images/logos/hospital.png",
-      
+
       "priceRange": "₹",
 
       "telephone": [
