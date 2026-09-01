@@ -1,7 +1,10 @@
 import Image from "next/image";
 
 export const metadata = {
-  title: "Leadership & Administration | SDMKK Charitable Hospital",
+  title:
+    "Leadership & Administration | SDMKK Charitable Hospital, Dombivli",
+  description:
+    "Learn about the leadership and administration of Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic, a charitable healthcare institution serving the Dombivli community.",
 };
 
 export default function LeadershipPage() {
