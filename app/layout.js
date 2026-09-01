@@ -25,8 +25,9 @@ const playfair = Playfair_Display({
 })
 
 export const metadata = {
-  title: 'Shree Dombivali Manav Kalyan Kendra Charitable Hospital & Polyclinic',
-  description: 'Corporate Care at Charitable Rate — A multi-speciality charitable hospital in Dombivali.',
+  title: 'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic',
+  description:
+    'Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic is a multi-speciality charitable hospital in Dombivli, Maharashtra, providing quality healthcare at charitable rates.',
 }
 
 export default function RootLayout({ children }) {
