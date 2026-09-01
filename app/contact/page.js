@@ -15,6 +15,12 @@ import {
 } from "lucide-react";
 import Footer from "@/components/site/Footer";
 
+export const metadata = {
+  title: "Contact Shree Dombivli Manav Kalyan Kendra Charitable Hospital | Dombivli",
+  description:
+    "Contact Shree Dombivli Manav Kalyan Kendra Charitable Hospital & Polyclinic in Dombivli for hospital enquiries, appointments, OPD information, emergency assistance and directions.",
+};
+
 export default function ContactPage() {
   const contactCards = [
     {
@@ -32,7 +38,7 @@ export default function ContactPage() {
       eyebrow: "EMAIL US",
       title: "Email Hospital",
       text: "Send us your enquiry and we will respond as promptly as possible.",
-      href: "mailto:sdmkk@yahoo.in",
+      href: "mailto:sdmk13@yahoo.in",
       action: "Send Email",
     },
     {
