@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://sdmkkhospital.com";
+  const baseUrl = "https://www.sdmkkhospital.com";
 
   return [
     {
