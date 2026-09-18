@@ -947,10 +947,10 @@ const Home = () => {
      <p className="mt-2 text-center text-sm leading-6 text-slate-600">
         Please send the transaction details to{" "}
         <a
-          href="mailto:sdmk13@yahoo.in"
+          href="mailto:admin@sdmkkhospital.com"
           className="font-semibold text-[#1E40AF] hover:underline"
         >
-          sdmk13@yahoo.in
+          admin@sdmkkhospital.com
         </a>{" "}
         for confirmation and to help process the applicable 80G documentation.
       </p>

@@ -32,7 +32,7 @@
         eyebrow: "EMAIL US",
         title: "Email Hospital",
         text: "Send us your enquiry and we will respond as promptly as possible.",
-        href: "mailto:sdmk13@yahoo.in",
+        href: "mailto:admin@sdmkkhospital.com",
         action: "Send Email",
       },
       {

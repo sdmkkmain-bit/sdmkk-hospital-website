@@ -215,10 +215,10 @@ export default function Footer() {
                   </p>
 
                   <a
-                    href="mailto:sdmk13@yahoo.in"
+                    href="mailto:admin@sdmkkhospital.com"
                     className="mt-1 block text-sm font-semibold text-white hover:text-blue-200"
                   >
-                    sdmk13@yahoo.in
+                    admin@sdmkkhospital.com
                   </a>
 
                 </div>
