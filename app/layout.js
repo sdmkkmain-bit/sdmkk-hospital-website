@@ -1,4 +1,5 @@
 import './globals.css'
+import Script from 'next/script'
 import { Inter, Poppins, Playfair_Display } from 'next/font/google'
 import { Providers } from './providers'
 import SiteChrome from '@/components/site/SiteChrome'
@@ -65,6 +66,20 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{__html:'window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);'}} />
       </head>
       <body className="font-sans antialiased bg-[#F8FAFC] text-[#1F2937]">
+      <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-7R0J9WF669"
+  strategy="afterInteractive"
+/>
+
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7R0J9WF669');
+  `}
+</Script>
         <script
   type="application/ld+json"
   dangerouslySetInnerHTML={{
