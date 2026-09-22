@@ -299,43 +299,53 @@ const Home = () => {
 
         <div className="mt-6 grid max-w-[570px] grid-cols-1 gap-3 sm:grid-cols-2">
 
-          {/* Call Hospital */}
-          <a
-            href={`tel:${HOSPITAL.phone.replace(/\s/g, '')}`}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-green-600 px-5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
-          >
+         {/* Call Hospital */}
+<a
+  href={`tel:${HOSPITAL.phone.replace(/\s/g, '')}`}
+  onClick={() => {
+    window.gtag?.('event', 'call_hospital', {
+      event_category: 'engagement',
+      event_label: 'Homepage Call Hospital',
+    })
+  }}
+  className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-green-600 px-5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
+>
 
-            <Phone className="h-4 w-4" />
+  <Phone className="h-4 w-4" />
 
-            Call Hospital
+  Call Hospital
 
-          </a>
-
-
-          {/* OPD */}
-          <Link
-            href="/opd-schedule"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1D4ED8] hover:shadow-md"
-          >
-
-            <CalendarDays className="h-4 w-4" />
-
-            View OPD Schedule
-
-          </Link>
+</a>
 
 
-          {/* Bed Availability */}
-          <Link
-            href="/bed-availability"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#173F8A] px-5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#12336F] hover:shadow-md"
-          >
-
-            <BedDouble className="h-4 w-4" />
-
-            Check Bed Availability
-
-          </Link>
+         {/* OPD */}
+<Link
+  href="/opd-schedule"
+  onClick={() => {
+    window.gtag?.('event', 'opd_schedule_click', {
+      event_category: 'engagement',
+      event_label: 'View OPD Schedule',
+    })
+  }}
+  className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1D4ED8] hover:shadow-md"
+>
+  <CalendarDays className="h-4 w-4" />
+  View OPD Schedule
+</Link>
+         {/* Bed Availability */}
+<Link
+  href="/bed-availability"
+  onClick={() => {
+    window.gtag?.('event', 'bed_availability_click', {
+      event_category: 'engagement',
+      event_label: 'Check Bed Availability',
+    })
+  }}
+  className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#173F8A] px-5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#12336F] hover:shadow-md"
+>
+  <BedDouble className="h-4 w-4" />
+  Check Bed Availability
+</Link>
 
 
           {/* Directions */}
