@@ -95,10 +95,24 @@ export default function OPDSchedulePage() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
+
     return DOCTORS.filter((d) => {
+      // Hide doctors explicitly marked as not visible.
+      // Doctors without this property remain visible.
+      if (d.visible === false) return false
+
       if (department !== 'all' && d.department !== department) return false
       if (day !== 'all' && !isAvailable(d, day)) return false
-      if (q && !d.name.toLowerCase().includes(q) && !d.department.toLowerCase().includes(q) && !(d.qualification || '').toLowerCase().includes(q)) return false
+
+      if (
+        q &&
+        !d.name.toLowerCase().includes(q) &&
+        !d.department.toLowerCase().includes(q) &&
+        !(d.qualification || '').toLowerCase().includes(q)
+      ) {
+        return false
+      }
+
       return true
     })
   }, [query, department, day])
@@ -174,7 +188,7 @@ export default function OPDSchedulePage() {
           <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-sm text-slate-500">
               <Users className="h-4 w-4" />
-              Showing <span className="font-semibold text-slate-900">{filtered.length}</span> of {DOCTORS.length} consultants
+             Showing <span className="font-semibold text-slate-900">{filtered.length}</span> of {DOCTORS.filter((d) => d.visible !== false).length} consultants
             </div>
             {hasFilter && (
               <Button variant="ghost" size="sm" onClick={clearAll} className="gap-1.5 h-8 text-slate-600 hover:text-[#1E40AF]">
