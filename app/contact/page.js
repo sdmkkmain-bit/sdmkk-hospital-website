@@ -18,14 +18,14 @@
   export default function ContactPage() {
     const contactCards = [
       {
-        number: "01",
-        icon: Phone,
-        eyebrow: "CALL US",
-        title: "Call Hospital",
-        text: "Reach our reception for appointments or urgent enquiries.",
-        href: "tel:02512445574",
-        action: "Call Hospital",
-      },
+  number: "01",
+  icon: Phone,
+  eyebrow: "CALL US",
+  title: "Call Hospital",
+  text: "Reach our reception for appointments or urgent enquiries.",
+  href: "tel:02512445574",
+  action: "Call Hospital",
+},
       {
         number: "02",
         icon: Mail,
@@ -177,10 +177,18 @@
 
                 return (
                   <a
-                    key={card.number}
-                    href={card.href}
-                    target={card.external ? "_blank" : undefined}
-                    rel={card.external ? "noopener noreferrer" : undefined}
+  key={card.number}
+  href={card.href}
+  onClick={() => {
+    if (card.action === "Call Hospital") {
+      window.gtag?.('event', 'call_hospital', {
+        event_category: 'engagement',
+        event_label: 'Contact Page Call Hospital',
+      })
+    }
+  }}
+  target={card.external ? "_blank" : undefined}
+  rel={card.external ? "noopener noreferrer" : undefined}
                     className={`contact-card contact-delay-${Math.min(
                       index + 1,
                       4
@@ -285,9 +293,15 @@
                   <div className="mt-7 flex flex-wrap gap-3">
 
                     {phoneNumbers.map((number) => (
-                      <a
-                        key={number}
-                        href={`tel:${number.replaceAll("-", "")}`}
+  <a
+    key={number}
+    href={`tel:${number.replaceAll("-", "")}`}
+    onClick={() => {
+      window.gtag?.('event', 'emergency_call', {
+        event_category: 'engagement',
+        event_label: `Emergency Phone ${number}`,
+      })
+    }}
                         className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:-translate-y-1"
                       >
                         {number}
@@ -299,15 +313,20 @@
                 </div>
 
 
-                <a
-                  href="tel:02512445574"
-                  className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-white px-7 py-4 font-bold text-blue-700 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                >
-                  <Phone className="h-5 w-5" />
-                  Call Hospital
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
-
+               <a
+  href="tel:02512445574"
+  onClick={() => {
+    window.gtag?.('event', 'emergency_call', {
+      event_category: 'engagement',
+      event_label: 'Emergency Section Call Hospital',
+    })
+  }}
+  className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-white px-7 py-4 font-bold text-blue-700 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+>
+  <Phone className="h-5 w-5" />
+  Call Hospital
+  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+</a>
               </div>
 
             </div>
@@ -352,25 +371,35 @@
                 </div>
 
 
-                <p className="mt-6 max-w-md leading-7 text-slate-500">
-                  Shree Dombivli Manav Kalyan Kendra
-                  <br />
-                  Charitable Hospital &amp; Polyclinic
-                  <br />
-                  Dombivli East, Maharashtra, India
-                </p>
+                
+<p className="mt-6 max-w-md leading-7 text-slate-500">
+  Shree Dombivli Manav Kalyan Kendra
+  <br />
+  Charitable Hospital &amp; Polyclinic
+  <br />
+  Manav Kalyan Kendra Co-operative Housing Society Limited
+  <br />
+  Joshi Wadi, TATA Power Lane, Tilak Nagar
+  <br />
+  Dombivli East, Dombivli, Maharashtra 421201
+</p>
 
 
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Shree+Dombivli+Manav+Kalyan+Kendra"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group mt-7 inline-flex items-center gap-3 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg"
-                >
-                  <Navigation className="h-4 w-4" />
-                  Get Directions
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+               <a
+href="https://www.google.com/maps/search/?api=1&query=Manav+Kalyan+Kendra+Co-operative+Housing+Society+Limited%2C+Joshi+Wadi%2C+TATA+Power+Lane%2C+Tilak+Nagar%2C+Dombivli+East%2C+Dombivli%2C+Maharashtra+421201"  onClick={() => {
+    window.gtag?.('event', 'directions_click', {
+      event_category: 'engagement',
+      event_label: 'Contact Page Get Directions',
+    })
+  }}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group mt-7 inline-flex items-center gap-3 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg"
+>
+  <Navigation className="h-4 w-4" />
+  Get Directions
+  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+</a>
 
               </div>
 
@@ -481,16 +510,23 @@
                 </div>
 
 
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Shree+Dombivli+Manav+Kalyan+Kendra"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg"
-                >
-                  <Navigation className="h-4 w-4" />
-                  Open Google Maps
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+               <a
+
+href="https://www.google.com/maps/search/?api=1&query=Manav+Kalyan+Kendra+Co-operative+Housing+Society+Limited%2C+Joshi+Wadi%2C+TATA+Power+Lane%2C+Tilak+Nagar%2C+Dombivli+East%2C+Dombivli%2C+Maharashtra+421201"
+  onClick={() => {
+    window.gtag?.('event', 'directions_click', {
+      event_category: 'engagement',
+      event_label: 'Contact Page Open Google Maps',
+    })
+  }}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg"
+>
+  <Navigation className="h-4 w-4" />
+  Open Google Maps
+  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+</a>
 
               </div>
 
@@ -631,24 +667,36 @@
 
                 <div className="flex flex-wrap gap-3">
 
-                  <a
-                    href="tel:02512445574"
-                    className="group inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  >
-                    <Phone className="h-4 w-4" />
-                    Call Hospital
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </a>
+                 <a 
+  href="tel:02512445574"
+  onClick={() => {
+    window.gtag?.('event', 'call_hospital', {
+      event_category: 'engagement',
+      event_label: 'Contact Page Final CTA Call Hospital',
+    })
+  }}
+  className="group inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+>
+  <Phone className="h-4 w-4" />
+  Call Hospital
+  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+</a>
 
 
                   <a
-                    href="/opd-schedule"
-                    className="group inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/20"
-                  >
-                    <CalendarDays className="h-4 w-4" />
-                    View OPD Schedule
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </a>
+  href="/opd-schedule"
+  onClick={() => {
+    window.gtag?.('event', 'opd_schedule_click', {
+      event_category: 'engagement',
+      event_label: 'Contact Page View OPD Schedule',
+    })
+  }}
+  className="group inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/20"
+>
+  <CalendarDays className="h-4 w-4" />
+  View OPD Schedule
+  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+</a>
 
                 </div>
 

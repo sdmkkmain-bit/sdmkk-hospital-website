@@ -101,15 +101,19 @@ export default function RootLayout({ children }) {
         "0251-2449563"
       ],
 
+      
+
       "address": {
         "@type": "PostalAddress",
         "streetAddress":
-          "Ground, 1st & 2nd Floor, Sharda Apartment, TATA Power Lane, Joshi Wadi, Tilak Nagar, Dombivli East",
+          "Manav Kalyan Kendra Co-operative Housing Society Limited, Joshi Wadi, TATA Power Lane, Tilak Nagar, Dombivli East",
         "addressLocality": "Dombivli",
         "addressRegion": "Maharashtra",
         "postalCode": "421201",
         "addressCountry": "IN"
       }
+
+  
     }),
   }}
 />
